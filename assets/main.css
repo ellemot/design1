@@ -53,11 +53,12 @@ a {
 }
 
 a.fancybox {
+	margin-left: 30px;
 	padding: 5px;
 	background: #ffffff;
 	border: 1px solid gray;
 	border-radius: 6px;
-	font-size: .7em;
+	font-size: 1.2em;
 	font-family: 'Quicksand', sans-serif;
 	display: inline;
 	margin:0;}
@@ -104,9 +105,9 @@ text-align: center;
 }
 
 .fancybox_div{
-	width: 400px;
-	height: 250px;
-	padding: 100px;
+	width: 300px;
+	height: 200px;
+	padding: 50px;
 	background-image: url('Images/linen.jpg');
 	background-color: #888888;
 	opacity: 0.8;
@@ -116,12 +117,12 @@ text-align: center;
 }
 
 .fancybox_div #login_title{
-font-size: 2em;
+font-size: 1.5em;
 color: dark gray;
 }
 
 .fancybox_div #login_text{
-font-size: 1.5em;
+font-size: 1.2em;
 color: black;
 }
 
@@ -210,7 +211,7 @@ color: black;
 .desc_container{
 	width:100;
 	background-color: #00CCCC;
-	height: 200px;
+	min-height: 300px;
 	text-align:center;
 	padding:10px;
 	color: white;

@@ -42,20 +42,21 @@ $(document).ready(function() {
 <h2 class ="desc_header">
 <div id= "left"> 
 	<img src= <?php echo base_url('assets/Images/photoicon.fw.png');?>>
-	<h3 class = "desc_subtitle">You Browse and Post</h3>
-	<p>Take pictures of the room that you'd like designed, and create your own ideabook. </p>
-</div>
+	<h3 class = "desc_subtitle">Imagine Your Room</h3>
+	<p>Browse existing designs and save pictures to your design book to get started. </p>
+	<p>Take pictures of the room you'd like designed and upload them to start the design process.  Enter in your budget for furnishings and decor.</p>
+	</div>
 
 <div id = "middle">
 	<img src= <?php echo base_url('assets/Images/talkicon.fw.png');?>>
 	<h3 class = "desc_subtitle">Provide Feedback for Designers</h3>
-	<p>Designers provide their design ideas and edit based on feedback.</p>
+	<p>Designers provide their design ideas, with pictures and options, and edit proposals based on feedback and budget restrictions.</p>
 </div>
 
 <div id = "right">
 <img src= <?php echo base_url('assets/Images/houseicon.fw.png');?>>
 	<h3 class = "desc_subtitle">Love Your Design</h3>
-	<p>You get a custom design, including paint colors, furniture and decor suggestions, for one flat fee. </p>
+	<p>You get a custom design, including paint colors, furniture, textile and decor suggestions, for one flat fee. </p>
 	</div>
 </div>
 
@@ -63,9 +64,9 @@ $(document).ready(function() {
 
 
 
-	
 </div>
 </div>
 </div>
+
 	
 			
