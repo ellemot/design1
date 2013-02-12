@@ -16,7 +16,6 @@ $(document).ready(function() {
 			<img src = <?php echo base_url("assets/Images/LR_1.jpg")?> class=bgM>
 			<img src = <?php echo base_url("assets/Images/LR_2.jpg")?> class=bgM>
 	</div>
-	
 	<div class = "explanation">
 <span>Help me with</span>
 <select class = "type">
@@ -36,7 +35,7 @@ $(document).ready(function() {
 		
 
 	</div>
-
+	<?php print_r($this->session->userdata);?>
 <div class = "push_down">.</div>
 <div class = "desc_container">
 <h2 class ="desc_header">

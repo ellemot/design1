@@ -52,6 +52,17 @@ a {
 	font-size: .6em;
 }
 
+a.fancybox_logout{
+	margin-left: 30px;
+	padding: 5px;
+	background: #ffffff;
+	border: 1px solid gray;
+	border-radius: 6px;
+	font-size: 1.2em;
+	font-family: 'Quicksand', sans-serif;
+	display: inline;
+	margin:0;}
+
 a.fancybox {
 	margin-left: 30px;
 	padding: 5px;

@@ -46,7 +46,7 @@ function fb_login(){
             FB.api('/me', function(response) {
             user_email = response.email; //get user email
              
-			location.reload(true);
+			location.replace('index.php/site/login');
 		
 			
 			});
@@ -61,6 +61,8 @@ function fb_login(){
     });
 }
 
+
+
 (function() {
     var e = document.createElement('script');
     e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
@@ -68,15 +70,25 @@ function fb_login(){
     document.getElementById('fb-root').appendChild(e);
 }());
 
-</script>
 
+</script>
 
 <div class = "full_wrapper">
 	<div class = "main_outer_container">
 			<div class = "content_container">
 				<div class = "header">
 					<div class = "banner_container">
-						<a class = "fancybox"  href="#login"> Login </a>
+					
+						<?php 
+							$ses_user=$this->session->userdata('userprofile');
+							if(isset($ses_user['username'])):?>
+								<a class = "fancybox_logout" href= <?php echo base_url('index.php/site/logout');?> onclick="FB.logout()">Logout</a>
+							 <?php else: ?>
+								<a class = "fancybox"  href="#login"> Login </a>
+							 <?php endif?>
+							
+									
+						
 						<div class = "logo_container">
 						<a class = "logo" href="main">EASABLE</a>
 						</div>
@@ -112,7 +124,3 @@ function fb_login(){
 	
 </script>		
 
-
-		
-</body>
-</html>
