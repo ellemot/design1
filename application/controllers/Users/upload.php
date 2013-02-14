@@ -189,7 +189,7 @@ function upload_photo_link()
 			
 	//if s3 responds with something return 1 to the site page view
 	if($s3result) {
-		$this->picture_model->store_photo($file_name);		
+		$this->picture_model->store_photo($file_name);	
 		unlink($file_location);
 		}
 	else {

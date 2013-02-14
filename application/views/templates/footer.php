@@ -1,5 +1,6 @@
 
-<div class = "push"></div>
+<div class = "push">
+</div>	
 <div class = "footer">
  <section class = "block">
 <h3> About Us</h3>

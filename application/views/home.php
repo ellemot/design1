@@ -27,7 +27,7 @@ $(document).ready(function() {
 </div>
 	
 	<div class="hero_text">
-		<h1 id="hero_text_1">Beautiful Design. </h1><h1 id = "hero_text_2"> Easy.</h1>
+		<strong><h1 id="hero_text_1">Beautiful Design. </h1><h1 id = "hero_text_2"> Easy.</h1></strong>
 		
 		<p>Check out some design ideas:</P>
 		<?php echo form_open('');

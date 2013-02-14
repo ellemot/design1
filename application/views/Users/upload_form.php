@@ -4,11 +4,13 @@ include(APPPATH.'/views/templates/header.php');
 ?>
 
 
+
+<div class = "photo_form_container">
+
 <input type = "submit" name = "photo_submit" id="upload_cancel" class = "submit" 
 value = "Cancel and Return">
-
-<div class = "photo_container">
-<p>Upload photo from a file or from a website:</p>
+<br><br><br><br>
+<p>Upload photo from a file or from a website:</p><br><br>
 <div class = "error">
 <?php 
 	if (isset($error))
@@ -23,7 +25,7 @@ value = "Cancel and Return">
 	echo '<div class = "photo_form">';
 	echo form_open_multipart('users/upload/upload_photo');
 	echo '<div class = "input_photo"> Browse for a file';
-	echo form_upload("file",'Browse for a file','class="hidden"');
+	echo form_upload("file",'Browse for a file','class="file_hidden"');
 	echo '</div>';
 	echo form_submit("submit", "submit", 'class="submit"');
 	echo form_close();
@@ -40,6 +42,7 @@ value = "Cancel and Return">
 	echo '</div>';
 	
 ?>
+<br><br>
 </div>
 <script>
 $(document).ready(function() {

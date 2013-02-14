@@ -74,9 +74,7 @@ function fb_login(){
 </script>
 
 <div class = "full_wrapper">
-	<div class = "main_outer_container">
-			<div class = "content_container">
-				<div class = "header">
+					<div class = "header">
 					<div class = "banner_container">
 					
 						<?php 
@@ -93,16 +91,17 @@ function fb_login(){
 						<a class = "logo" href="main">EASABLE</a>
 						</div>
 					</div>
-				</div>
+					
+					</div>
 			<div class = "nav_bar">
 			<ul class = "nav">
 				<li><a href="">Browse Designs</a></li>
-				<li><a href="">Get Designs</a></li>
+				<li><a href=<?php echo base_url('index.php/Users/site');?>>Get Your Designs</a></li>
 				<li><a href="">Post Designs</a></li>
 			</ul>
-			<div class = "banner_2">Blog Us Here</div>
 			</div>
-		
+			<div class = "banner_2">Blog Us Here</div>
+			
 			<div id="login" style="display:none";>
 				<div class = "fancybox_div">
 					<p id="login_title"> Sign In to Easable </p>
@@ -124,3 +123,4 @@ function fb_login(){
 	
 </script>		
 
+<div id = "main_content">
