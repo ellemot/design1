@@ -13,13 +13,22 @@ Add Project
 </div>
 </div>
 <?php echo $this->session->userdata('first_name');?> 
+<div class = "errors">
+
+<?php if(isset($error))
+{echo $error;}
+?>
+</div>
+
 <div id = "home_photo_container">
 <?php
-
+if(isset($images)){
 foreach ($images as $value) 
 {
 	echo '<img src="https://s3.amazonaws.com/easableimages/'.$value->filename.'" height=300 class= "home_inactive">';
-}
+}}
+
+else {echo 'nope';}
 ?>
 </div>
 </div>

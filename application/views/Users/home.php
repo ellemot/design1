@@ -2,49 +2,45 @@
 
 include(APPPATH.'/views/templates/header.php');
 ?>
+<div class="users_home">
+<div id = "users_nav">
+<div id = "button_nav">
+<div id = "add_button_left"> <a href=<?php echo base_url('index.php/Users/upload');?>>
+<img src= <?php echo base_url('assets/Images/photoicon.fw.png');?>><br>Add Photo </a> </div>
+<div id = "add_button_right"> <img src= <?php echo base_url('assets/Images/fileicon.fw.png');?>><br>
+Add Project
+</div>
+</div>
+</div>
+<?php echo $this->session->userdata('first_name');?> 
+<div class = "errors">
 
-<div class = "photo_container">
-<p>Upload a picture from your computer or copy and paste a link</p>
-
-
-<?php
-
-	$this->load->helper('form');
-	echo '<div class = "photo_form">';
-	echo form_open_multipart('users/upload/upload_photo');
-	echo '<div class = "input_photo"> Browse for a file';
-	echo form_upload("file",'Browse for a file','class="hidden"');
-	echo '</div>';
-	echo form_submit("submit", "submit", 'class="submit"');
-	echo form_close();
-	echo '</div>';
-	
-	echo '<div class = "photo_form">';
-	echo form_open('users/upload/photo_link');
-	echo form_input('weblink','http://','class="input_photo"','id="photo_link"');
-	echo form_submit("submit1", 'submit', 'class="submit"');
-	echo form_close();
-	echo '</div>';
-	
+<?php if(isset($error))
+{echo $error;}
 ?>
 </div>
-<div class="push"></div>
-<script>
-$(document).ready(function() {
-    
-		var value = $("#photo_link").val();
-		$("#photo_link").focus(function(){
-				if($("#photo_link").val()==value) 
-				$("#photo_link").val("");
-					})
-				.blur(function(){
-				if($("#photo_link").val()=="")
-					$("#photo_link").val(value);
-					});
-				
-		});
-</script>
 
+<div id = "home_photo_container">
 <?php
-$this->load->view('templates/footer');
+if(isset($images)){
+foreach ($images as $value) 
+{
+	echo '<img src="https://s3.amazonaws.com/easableimages/'.$value->filename.'" height=300 class= "home_inactive">';
+}}
+
+else {echo 'nope';}
 ?>
+</div>
+</div>
+
+<div class="push"></div>
+
+<script>
+
+$(document).ready(function(){
+	$("a").hover(function(){
+		$(this).addclass("button_hover");
+		});
+		});
+
+		</script>

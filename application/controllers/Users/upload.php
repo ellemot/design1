@@ -17,7 +17,7 @@ Class Upload extends CI_Controller {
 		
 function index() {
 
-$this->load->view('Users/home');
+$this->load->view('Users/upload_form');
 
 }
 		
@@ -26,10 +26,6 @@ $this->load->view('Users/home');
 	{
 		$this->load->helper('string');
 		
-		$user_auth=$this->session->userdata('is_logged_in');
-		
-		if ($user_auth) {	
-			
 		if (isset($_POST['submit'])) 
 		{
 			$data['file']=$_FILES["file"];
@@ -47,6 +43,7 @@ $this->load->view('Users/home');
 					if ($_FILES["file"]["error"] > 0)
 							{
 								$data['error']='error loading file';
+								$this->load->view('Users/upload_form.php',$data);
 							}
 					else
 							{
@@ -57,81 +54,68 @@ $this->load->view('Users/home');
 										{
 											$file_name=$this->set_file_name();
 										}
-									
 									else 
-									{	
-										$file_name = $file_name.'.'.$extension;
-										
-										$this->s3->putBucket('EasableImages', S3::ACL_PUBLIC_READ);
-										$s3result=$this->s3->putObjectFile($file_location,'EasableImages',$file_name, S3::ACL_PUBLIC_READ);
-											if($s3result) {
-												$this->picture_model->store_photo($file_name);
-											}
-										
-											else {
-												$data['error']='Unable to Upload';
-												}		
-									}
-					}
+										{	
+											$file_name = $file_name.'.'.$extension;
+											$this->s3->putBucket('EasableImages', S3::ACL_PUBLIC_READ);
+											$s3result=$this->s3->putObjectFile($file_location,'EasableImages',$file_name, S3::ACL_PUBLIC_READ);
+												if($s3result) {
+													$this->picture_model->store_photo($file_name);
+													$data['error']='Successfully Uploaded Photo';
+													$this->load->view('users/site');
+													}
+												else {
+													$data['error']='Unable to Upload';
+													$this->load->view('Users/upload_form.php',$data);
+													}		
+									}	
+					}	
 			
 			}
 			else
 				{
 				$data['error']='Invalid File Type';
-								
+				$this->load->view('Users/upload_form.php',$data);				
 				}
 
 			
 		}
-		else { $data['file']=0; }
-		
-		$this->load->view('users/site',$data);
-}		
+				
 		else {
 			redirect(base_url());
-}
-}
-		
-	
-		
-	function set_file_name()
-	{
-	
-		$file_name= random_string('numeric',12);
-		
-		$exists=$this->picture_model->check_name($file_name);
-		
-		if ($exists)
-		{
-			$file_name= 0;
-		}
-		
-		else {
-			$file_name = $file_name;
-		}
-		
-		return $file_name;
+			}
+
 	}
 	
-	
-	
+function set_file_name()
+	{
+		$file_name= random_string('numeric',12);
+		$exists=$this->picture_model->check_name($file_name);
+		if ($exists){$file_name= 0;}
+		else {$file_name = $file_name;}
+		return $file_name;
+	}
+		
 function photo_link() {
 
 	require_once(APPPATH.'/url_to_absolute_2.php');
+	require_once(APPPATH.'simple_html_dom.php');
 	$this->image_path= realpath(APPPATH.'/images');
 	
-	if (isset($_POST['submit1']))
+if (isset($_POST['submit1']))
 	{
 	
-		$images = array();
-		$link = trim($this->input->post('weblink'));
-		
-		require_once(APPPATH.'simple_html_dom.php');
+	$value = $_POST['weblink'];
+	if($value !='http://')
+	{
+			$images = array();
+			$link = trim($this->input->post('weblink'));
+							
 		try{
 			$html = file_get_html(urldecode(trim($link)));
 		}
 		catch (exception $e){ 
-			$data['error']='Unable to Load Page';
+			$data['error']='Error:'.$e;
 			redirect(base_url('index.php/users/site'));
 		}
 		
@@ -139,12 +123,10 @@ function photo_link() {
 		{
 			$image=$element->src;
 			$src= url_to_absolute($link,$image);
-			
 			$extension = end(explode(".", $image));
-			
 			if(strlen($extension)>4){
-			$extension = 'jpg';
-			}
+				$extension = 'jpg';
+				}
 			
 			$file_name=$this->set_file_name();
 			if ($file_name==0)
@@ -154,66 +136,68 @@ function photo_link() {
 			
 			$file_name = $file_name.'.'.$extension;
 			$file_location = $this->image_path.'/'.$file_name;
-			copy($src,$file_location);
+			copy($src,$file_location);//copy over file source
 			
 			$size=getimagesize($file_location);
 			if($size[0]>200) {
 				$images[]=$src;
-				}
-			
-			}
-		
-		
-		
+				}//only images over certain width
+			unlink($file_location);
+			}//end foreach
 		$data['images']=$images;
+		$this->load->view('Users/test',$data);
+		}
+	else
+	{ 	
+		$data['error']='No url entered, please enter';
+		$this->load->view('Users/upload_form',$data);
 	}
-		$this->load->view('users/test',$data);
-		
+	}	
+	else { 
+	$data['error']='Please Hit Submit';
+	redirect(base_url('index.php/Users/upload_form'),$data);
 	}
+}	
 	
+function upload_photo_link()
+{
+	$this->image_path= realpath(APPPATH.'/images');
+	$images =json_decode($_POST['images']);
+			
+	foreach ($images as $image){
+	$file_name = $this->set_file_name();
+	//continue getting file names until get new one
+	if ($file_name==0)
+		{
+		$file_name=$this->set_file_name();
+		}
+	//place to store image temporarily
+	$extension = end(explode(".", $image));
 	
-	function upload_photo_link()
-	{
-	
-		$this->image_path= realpath(APPPATH.'/images');
-		
-		$images =json_decode($_POST['images']);
-					
-		foreach ($images as $image){
-			$file_name = $this->set_file_name();
-						
-			//continue getting file names until get new one
-			if ($file_name==0)
-				{
-				$file_name=$this->set_file_name();
+	if(strlen($extension)>4){
+				$extension = 'jpg';
 				}
-			//place to store image temporarily
-			$extension = end(explode(".", $image));
+				
+	$file_name = $file_name.'.'.$extension;
 			
-			$file_name = $file_name.'.'.$extension;
+	$file_location = $this->image_path.'/'.$file_name;
+	copy($image, $file_location);
 			
-			$file_location = $this->image_path.'/'.$file_name;
+	//initiate bucket
+	$this->s3->putBucket('EasableImages', S3::ACL_PUBLIC_READ);
+	$s3result=$this->s3->putObjectFile($file_location,'EasableImages',$file_name, S3::ACL_PUBLIC_READ);
 			
-			copy($image, $file_location);
-			
-			//initiate bucket
-			$this->s3->putBucket('EasableImages', S3::ACL_PUBLIC_READ);
-			$s3result=$this->s3->putObjectFile($file_location,'EasableImages',$file_name, S3::ACL_PUBLIC_READ);
-			
-			//if s3 responds with something return 1 to the home page view
-			if($s3result) {
-							
-							$this->picture_model->store_photo($file_name);
-							
-							}
-										
-			else {
-				return 0;
-				}	
-			 }
+	//if s3 responds with something return 1 to the site page view
+	if($s3result) {
+		$this->picture_model->store_photo($file_name);		
+		unlink($file_location);
+		}
+	else {
+			return 0;
+		}	
+}//end foreach
 
 	}
 		
-		
-	}	
+}	
 		

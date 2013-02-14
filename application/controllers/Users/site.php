@@ -20,12 +20,12 @@ Class Site extends CI_Controller {
 	if($rows==0)
 	{
 		$data['images']=0;
-		 $this->load->view('Users/site',$data);
+		 $this->load->view('Users/home',$data);
 	}
 	
 	else{
 			$data['images']=$rows;
-			 $this->load->view('Users/site',$data);
+			 $this->load->view('Users/home',$data);
 	}
 	
 	}
