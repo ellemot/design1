@@ -45,4 +45,16 @@ class User_model extends CI_Model {
 		
 		}
 		
+function get_userid($userprofile) 
+{
+	$fb_id = $userprofile['id'];
+	
+	$this->db->select('id');
+	$this->db->where('fb_id', $fb_id);
+	$query=$this->db->get('users');
+	
+	return $query->result();
+}
+	
+		
 		}

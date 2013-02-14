@@ -31,10 +31,23 @@ function login()
 			$session_user['userprofile']= $this->facebook->api('/me');
 			
 			$this->load->model('user_model');	 //call model
-			$this->user_model->check_fb_user($session_user['userprofile']);//checks to see if in db, else adds
+			$result=$this->user_model->check_fb_user($session_user['userprofile']);//checks to see if in db, else adds
 			
-			$this->session->set_userdata($session_user);
-			redirect(base_url());
+			
+			if ($result) {
+				$userid=$this->user_model->get_userid($session_user['userprofile']);
+				
+					foreach ($userid as $user)
+						{ 
+							$id = $user->id;
+						}
+						
+				$session_user['userid']=$id;
+				$session_user['is_logged_in']=1;
+				$this->session->set_userdata($session_user);
+			}
+			else {};
+			redirect(base_url('index.php/Users/site'));
 		
 		}
 		else  {
