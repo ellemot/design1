@@ -198,6 +198,17 @@ function upload_photo_link()
 }//end foreach
 
 	}
+
+function delete_photo(){
+	$images = array(json_decode($_POST['images']));
+	
+	
+	foreach ($images as $image)
+	{ 
+	 $filename = substr(strrchr($image, '/'), 1);
+	 $this->picture_model->delete_user_photos($filename);
+	}
+	
+		}
 		
-}	
-		
+		}

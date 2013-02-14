@@ -353,13 +353,23 @@ margin:10px;
 }
 
 img.active {
-border: 30px solid yellow;
+border: 30px solid lightgray;
 margin: 10px;
+-webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.5),
+            0 0 16px rgba(0,0,0,0.5); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.5),
+            0 0 16px rgba(0,0,0,0.5); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.5),
+            0 0 16px rgba(0,0,0,0.5);
 }
 
 #button_container {
 width:100%;
 text-align: center;
+padding-top: 15px;
 }
 
 .submit {
@@ -377,6 +387,10 @@ text-align: center;
 	-webkit-box-shadow: 1px 1px 1px #888;
 	box-shadow: 1px 1px 1px #888;
 	height: 40px;
+	}
+	
+.submit:hover{
+	background-color:#D3D3D3;
 	}
 	
 .input_photo {
@@ -441,7 +455,7 @@ margin: 15px;
 background-image: none;
 }
 
-#home_photo_container img:hover{
+.home_inactive:hover{
 opacity: .5;
 }
 
@@ -496,4 +510,63 @@ background-color: #D3D3D3;
 
 div #add_button_right:hover{
 background-color: #D3D3D3;
+}
+
+
+	
+#select_photo_nav {
+width: 100%;
+height: 85px;
+margin: auto;
+ -webkit-box-shadow: 
+                0 0 16px rgba(0,0,0,0.3); 
+    -moz-box-shadow: 
+                 0 0 16px rgba(0,0,0,0.3); 
+    box-shadow: 
+                 0 0 16px rgba(0,0,0,0.3);
+background-color:  #F8F8FF;			 
+}
+
+.error {
+color: red;
+font-size: 1em;
+}
+
+#upload_cancel{
+font-size: .7em;
+height: 30px;
+margin-left: 40px;
+margin-top: 20px;
+background-color: lightgray;
+}
+
+
+.user_photos {
+position: relative;
+height: 400px;
+margin:0;
+padding: 0;
+display: inline-block;
+}
+
+.home_inactive {
+position: relative;
+top:0;
+left: 0;
+}
+
+.photo_hidden {
+position: absolute;
+top: 10px;
+left: 10px;
+display: block;
+z-index: 999;
+}
+
+.photo_hidden2 {
+position: absolute;
+top: 10px;
+left: 50px;
+display: block;
+z-index:999;
 }

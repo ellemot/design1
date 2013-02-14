@@ -33,6 +33,7 @@
 	function get_user_photos($userid) {
 		$this->db->where('userid', $userid);
 		$this->db->select('filename');
+		$this->db->limit(20);
 		$this->db->order_by("timestamp", "desc"); 
 		$result=$this->db->get('pictures');
 	
@@ -49,12 +50,11 @@
 }
 
 
-function delete_user_photos($file_name)
+function delete_user_photos($filename)
 {
-	$this->db->delete('filename',$file_name);
+	$this->db->where('filename',$filename);
 	$this->db->delete('pictures');
 	
-
 	}
 		
 	}
