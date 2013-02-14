@@ -12,7 +12,7 @@ Add Project
 </div>
 </div>
 </div>
-<?php echo $this->session->userdata('first_name');?> 
+<?php echo $this->session->userdata('userid');?> 
 <div class = "errors">
 
 <?php if(isset($error))

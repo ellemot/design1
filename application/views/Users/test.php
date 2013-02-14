@@ -2,8 +2,13 @@
 <?php
 include(APPPATH.'/views/templates/header.php');
 ?>
+<div id = "select_photo_nav">
 <div id="button_container"> 
-<input type = "submit" name = "photo_submit" id="photo_submit" value = "submit">
+<input type = "submit" name = "photo_submit" id="photo_submit" class = "submit" 
+value = "Submit Selected">
+<input type = "submit" name = "photo_submit" id="photo_cancel" class = "submit" 
+value = "Cancel and Return">
+</div>
 </div>
 <?php
 
@@ -36,6 +41,10 @@ $(document).ready(function() {
 						}
 					 });
 					 }); 
+		
+		$("#photo_cancel").click(function() {
+			location.href='/test/design/index.php/users/upload';
+			});
 		
 		});
 	
