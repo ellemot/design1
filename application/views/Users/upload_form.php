@@ -3,9 +3,12 @@
 include(APPPATH.'/views/templates/header.php');
 ?>
 
-<div class = "photo_container">
-<p>Upload a picture from your computer or copy and paste a link</p>
 
+<input type = "submit" name = "photo_submit" id="upload_cancel" class = "submit" 
+value = "Cancel and Return">
+
+<div class = "photo_container">
+<p>Upload photo from a file or from a website:</p>
 <div class = "error">
 <?php 
 	if (isset($error))
@@ -28,27 +31,22 @@ include(APPPATH.'/views/templates/header.php');
 	
 
 	echo '<div class = "photo_form">';
-	echo form_open('users/upload/photo_link');
-	echo form_input('weblink','http://','class="input_photo"','id="photo_link"');
+	echo form_open('users/upload/photo_link');?>
+	<input type="text" name="weblink" value="http://" id="photo_link"  class="input_photo" 
+	onfocus="value=''" onblur="value=value" />
+	<?php
 	echo form_submit("submit1", 'submit', 'class="submit"');
 	echo form_close();
 	echo '</div>';
 	
 ?>
 </div>
-<div class="push"></div>
 <script>
 $(document).ready(function() {
     
-		var value = $("#photo_link").val();
-		$("#photo_link").focus(function(){
-				if($("#photo_link").val()==value) 
-				$("#photo_link").val("");
-					})
-				.blur(function(){
-				if($("#photo_link").val()=="")
-					$("#photo_link").val(value);
-					});
+		$("#upload_cancel").click(function() {
+			location.href='/test/design/index.php/users/site';
+			});
 				
 		});
 </script>

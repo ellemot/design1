@@ -28,8 +28,9 @@ foreach ($images as $value)
 	echo '<img src="https://s3.amazonaws.com/easableimages/'.$value->filename.'" height=300 class= "home_inactive">';
 }}
 
-else {echo 'nope';}
+else {echo 'Get started now!';}
 ?>
+
 </div>
 </div>
 
