@@ -78,8 +78,8 @@ function fb_login(){
 					<div class = "banner_container">
 					
 						<?php 
-							$ses_user=$this->session->userdata('userprofile');
-							if(isset($ses_user['username'])):?>
+							$userid = $this->session->userdata('userid');
+							if($userid):?>
 								<a class = "fancybox_logout" href= <?php echo base_url('index.php/site/logout');?> onclick="FB.logout()">Logout</a>
 							 <?php else: ?>
 								<a class = "fancybox"  href="#login"> Login </a>
@@ -88,7 +88,7 @@ function fb_login(){
 									
 						
 						<div class = "logo_container">
-						<a class = "logo" href="main">EASABLE</a>
+						<a class = "logo" href=<?php echo base_url();?>>EASABLE</a>
 						</div>
 					</div>
 					

@@ -74,6 +74,7 @@ a {
 
 
 .full_wrapper {
+	min-width: 1024px;
 	min-height: 100%;
 	height: auto !important;
 	height: 100%;
@@ -195,8 +196,8 @@ a.logo {
 	width: 300px;
 	height: 200px;
 	padding: 50px;
-	background-image: url('Images/linen.jpg');
-	background-color: #888888;
+	background-image: url('Images/linen_pop_up.fw.png');
+	background-color: #FFFFFF;
 	border: 4px solid white;
 	font-family: 'Quicksand', sans-serif;
 	text-align:center;
@@ -238,10 +239,19 @@ padding: 20px;
 .block { 
 	padding-top: 10px;
 	padding-left: 50px;
+	margin-left: 30px;
 	font-size: .75em;
 	width: 40%; 
-	float:left;}
-
+	float:left;
+	text-align: left;}
+	
+.block h3{
+	font-size: 1.5em;
+	font-family: 'Quicksand', sans-serif;
+	margin-bottom: 5px;
+	margin-top: 20px;
+	}
+	
 .block ul {
 	   padding-bottom: 10px;
 		padding-left: 0;
@@ -255,15 +265,15 @@ padding: 20px;
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
-    padding-bottom: 0px;
+    padding-bottom: 5px;
     padding-left: 0;
     padding-right: 0;
-    padding-top: 0;
+    padding-top: 5px;
 	}
 	
 	
 .block2 {
-	padding-top: 10px;
+	padding-top: 20px;
 	padding-right:50px;
 	width: 40%; 
 	float: right;}
@@ -277,7 +287,7 @@ padding: 20px;
 }
 
 .block2 ul li{
-	margin-bottom: 10px;
+	margin-bottom: 0px;
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
@@ -421,11 +431,21 @@ font-size: .9em;
 }
 
 /* Home Page for Users */
+
+#contest_head{
+font-size: 1.7em;
+font-family: 'Quicksand', sans-serif;
+color: #00CCCC;
+margin-top: 10px;
+}
+
+
 #home_photo_container{
 	text-align:center;
 	margin: 15px;
 	background-image: none;
 }
+
 /* Div for each photo */
 .user_photos {
 position: relative;
@@ -451,13 +471,10 @@ left: 50px;
 display: block;
 z-index:999;
 }
-
-
-.home_user_pics{
+.home_user_contest{
 	position: relative;
 	top:0;
 	left: 0;
-	border: 5px solid white; 
     -webkit-box-shadow: 
                 0 0 16px rgba(0,0,0,0.3); 
     -moz-box-shadow: 
@@ -465,11 +482,75 @@ z-index:999;
     box-shadow: 
                  0 0 16px rgba(0,0,0,0.3); 
     padding: 15px;
-    margin: 0 20px 20px 0;
+    margin: 20px 20px 20px 0;
+	display: inline-block;
+	font-size: 1em;
+	background-color: #ffffff;
+		}
+	
+#title_contest_div{
+position: absolute;
+top:300px;
+background-color: white;
+width: 300px;
+height: 50px;
+padding-top: 10px;
+ }
+
+#title_contest{
+font-size: 1.5em;
+font-family: 'Quicksand', sans-serif;
+position:absolute;
+left: 40px;
+color: black;
+}
+
+#home_contest_container{
+	margin: 20px 0 10px 0;
+	border: 10px solid white;
+    -webkit-box-shadow: 
+                0 0 16px rgba(0,0,0,0.3); 
+    -moz-box-shadow: 
+                 0 0 16px rgba(0,0,0,0.3); 
+    box-shadow: 
+                 0 0 16px rgba(0,0,0,0.3); 
+	padding: 15px;
+	text-align: center;
+	}
+
+.home_user_pics, .contest_user_pics1, .contest_user_pics2{
+	position: relative;
+	top:0;
+	left: 0;
+	border: 20px solid white; 
+    -webkit-box-shadow: 
+                0 0 16px rgba(0,0,0,0.3); 
+    -moz-box-shadow: 
+                 0 0 16px rgba(0,0,0,0.3); 
+    box-shadow: 
+                 0 0 16px rgba(0,0,0,0.3); 
+ 	margin: 10px;
 	display: inline-block;
 	color: #888;
 	font-size: 1em;
 	background-color: #ffffff;
+	}
+	
+	
+.design_pics{
+	position: relative;
+	border: 20px solid white; 
+    -webkit-box-shadow: 
+                0 0 16px rgba(0,0,0,0.3); 
+    -moz-box-shadow: 
+                 0 0 16px rgba(0,0,0,0.3); 
+    box-shadow: 
+                 0 0 16px rgba(0,0,0,0.3); 
+	display: inline-block;
+	color: #888;
+	font-size: 1em;
+	background-color: #ffffff;
+	margin: 10px;
 	}
 
 .home_user_pics:hover{
@@ -485,7 +566,7 @@ z-index:999;
 
 #button_nav {
 	width: 100%;
-	height: 80px;
+	height: 90px;
 	margin: auto;
 	-webkit-box-shadow: 
                 0 0 16px rgba(0,0,0,0.3); 
@@ -497,28 +578,30 @@ z-index:999;
 }
 
 #add_button_left{
-	padding: 10px;
-	margin-top: 5px;
-	margin-bottom: 5px;
+	padding: 5px;
+	margin-top: 10px;
+	margin-bottom: 0px;
 	margin-right:0px;
 	display: inline-block;
 	width: 15%;
 	border-right: 1px solid lightgray;
 }
 
-#add_button_left a
+#add_button_left img
 {
-	padding-top: 5px;
+	padding: 5px;
 }
 #add_button_right{
-	padding-left:0px;
-	padding-top: 13px;
-	padding-bottom:10px;
-	margin-top: 5px;
-	margin-bottom: 5px;
+	padding: 5px;
+	margin-top: 10px;
+	margin-bottom: 0px;
 	margin-left:0px;
 	display: inline-block;
 	width: 15%;
+}
+#add_button_right img
+{
+	padding: 5px;
 }
 
 div #add_button_left:hover{
@@ -533,12 +616,12 @@ div #add_button_right:hover{
 
 /* Photo Selection Page	 */
 img.inactive {
-	border: 30px solid white;
+	border: 20px solid white;
 	margin:10px;
 }
 
 img.active {
-	border: 30px solid lightgray;
+	border: 20px solid #00CCCC;
 	margin: 10px;
 	-webkit-box-shadow: 
 		  inset 0 0 8px  rgba(0,0,0,0.5),
@@ -596,7 +679,7 @@ img.active {
 /* Photo Upload Form */
 
 
-.photo_form_container {
+.photo_form_container, #contest_user_photos , #contest_inspr_photos{
 	text-align: center;
 	padding: 10px;
 	width: 90%;
@@ -659,7 +742,8 @@ float: left;
 	}
 
 
-.file_hidden {
+.file_hidden, #file1, #file2, #file3, #file11, #file21, #file31{
+	position:absolute;
 	opacity:0;
 }
 
@@ -670,12 +754,263 @@ float: left;
 	}
 
 
+/* Contest Upload Form */
+.contest_form_container {
+	text-align: center;
+	padding: 10px;
+	width: 75%;
+	background-color: #ffffff;
+	margin-left:auto;
+	margin-right: auto;
+	margin-top: 20px;
+	border: 1px solid lightgray;
+	 -webkit-box-shadow: 
+            0 0 16px rgba(0,0,0,0.3); 
+    -moz-box-shadow: 
+            0 0 16px rgba(0,0,0,0.3); 
+    box-shadow: 
+            0 0 16px rgba(0,0,0,0.3); 
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	
+}
+
+.contest_form_container  p  {
+padding: 25px 0 10px 0;
+font-family: 'Quicksand', sans-serif;
+font-size: 1.5em;
+}
+	
+.form_container {
+padding: 40px 10px 10px 10px;
+}
+
+.form_container label {
+font-family: 'quicksand'
+}
+
+
+.first_row{
+margin: 0 0 20px 0;
+}
+hr.style { border: 0; height: 0; border-top: 1px solid rgba(0, 0, 0, 0.1); border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+label#title_input{
+	font-size: 1em;
+	margin: 0 10px 20px 0;
+	}
+
+input#title_input{
+	border: 5px solid white; 
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.3),
+            0 0 16px rgba(0,0,0,0.3); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.3),
+            0 0 16px rgba(0,0,0,0.3); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.3),
+            0 0 16px rgba(0,0,0,0.3); 
+    background: rgba(255,255,255,0.3);
+    margin: 10px 10px 10px 0;
+	width: 90%;
+	padding: 10px;
+	display: inline-block;
+	color: #888;
+	font-size: .8em;
+	font-family: 'Quicksand', sans-serif;
+}
+
+
+select#room_type{
+	border: 5px solid white; 
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.3),
+            0 0 16px rgba(0,0,0,0.3); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.3),
+            0 0 16px rgba(0,0,0,0.3); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.3),
+            0 0 16px rgba(0,0,0,0.3); 
+    background: rgba(255,255,255,0.3);
+    margin: 10px 0px 10px 0;
+	width: 90%;
+	padding: 10px;
+	display: inline-block;
+	color: #888;
+	font-size: .8em;
+	font-family: 'Quicksand', sans-serif;
+	}
+
+label#room_type{
+	font-size: 1em;
+	margin: 0 10px 20px 30px;
+	}
+
+
+#second_row	{
+clear: both;
+position: relative;
+}
+
+.left_form{
+float: right;
+width: 45%;
+border-left: 1px solid lightgray;
+padding: 20px;
+}
+
+.right_form{
+float: left;
+width: 45%;
+border-right: 1px solid lightgray;
+padding: 20px;
+font-family: 'Quicksand', sans-serif;
+}
+
+.right_form a {
+font-family: 'Quicksand', sans-serif;
+padding: 20px;
+color: #00CCCC;
+}
+
+
+.right_form_1 {
+width: 45%;
+display: inline-block;
+margin: 0 10px 0 10px;
+text-align: center;
+}
+
+
+#pictures_row , #select_row{
+clear: both;
+padding: 5px 0 0 0;
+font-family: 'Quicksand', sans-serif;
+
+}
+
+.design_photos{
+display: inline-block;
+padding: 10px;
+}
+
+#background_photo_form{
+background-image:url('Images/linen_bg.jpg');
+padding: 20px;}
+
+.left_form_1 {
+width: 45%;
+display: inline-block;
+margin: 0 30px 0 0;
+text-align: center;	
+}
+
+.left_form_photo {
+width: 45%;
+display: inline-block;
+}
+
+.right_form_photo {
+width: 45%;
+display: inline-block;
+}
+
+.right_form_photo a {
+color: #00CCCC;
+}
+.input_photo_contest, #file1hide, #file2hide, #file3hide, #file11hide, #file21hide, #file31hide{
+	border: 5px solid white; 
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.3),
+            0 0 16px rgba(0,0,0,0.3); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.3),
+            0 0 16px rgba(0,0,0,0.3); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.3),
+            0 0 16px rgba(0,0,0,0.3); 
+    background: rgba(255,255,255,0.3);
+    margin: 10px 10px 10px 0;
+	width: 60%;
+	padding: 10px;
+	display: inline-block;
+	background-color: white;
+	
+	color: #888;
+	font-size: .8em;
+	height: 18px;
+	font-family: 'Quicksand', sans-serif;}
+	
+	#form_2 textarea {
+	border: 5px solid white; 
+    -webkit-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.3),
+            0 0 16px rgba(0,0,0,0.3); 
+    -moz-box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.3),
+            0 0 16px rgba(0,0,0,0.3); 
+    box-shadow: 
+      inset 0 0 8px  rgba(0,0,0,0.3),
+            0 0 16px rgba(0,0,0,0.3); 
+    background: rgba(255,255,255,0.3);
+    margin: 10px 10px 10px 10px;
+	padding: 10px;
+	display: inline-block;
+	background-color: white;
+	
+	color: #888;
+	font-size: .8em;
+	font-family: 'Quicksand', sans-serif;}
+
+.navigation1 {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color:#ededed;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#777777;
+	font-family:'Quicksand', sans-serif;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ffffff;
+}.navigation1:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+	background-color:#dfdfdf;
+}.navigation1:active {
+	position:relative;
+	top:1px;
+}
+#next1 {
+margin: 0 0 0 800px;
+}
+#prev2 {
+margin: 0 800px 0 0;
+}
+
+#already_uploaded
+{text-align: center;
+}
 
 
 
 	
-
-
-
+/* Floor Plan Draw */
+#container_fp { position: relative; width: 300px; height: 300px; margin: auto; 
+margin-top: 50px; margin-bottom: 50px; }
+#imageView { border: 1px solid #000; }
+#imageTemp { position: absolute; top: 1px; left: 1px; border: 1px solid red;}
 
 

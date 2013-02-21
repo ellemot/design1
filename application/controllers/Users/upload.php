@@ -60,7 +60,9 @@ $this->load->view('Users/upload_form');
 											$this->s3->putBucket('EasableImages', S3::ACL_PUBLIC_READ);
 											$s3result=$this->s3->putObjectFile($file_location,'EasableImages',$file_name, S3::ACL_PUBLIC_READ);
 												if($s3result) {
-													$this->picture_model->store_photo($file_name);
+													$data['file_name']=$file_name;
+													$data['orig_src']=10;
+													$this->picture_model->store_photo($data);
 													$data['error']='Successfully Uploaded Photo';
 													$this->load->view('users/site');
 													}
@@ -189,7 +191,9 @@ function upload_photo_link()
 			
 	//if s3 responds with something return 1 to the site page view
 	if($s3result) {
-		$this->picture_model->store_photo($file_name);	
+		$data['file_name']=$file_name;
+		$data['orig_src']=$image;
+		$this->picture_model->store_photo($data);	
 		unlink($file_location);
 		}
 	else {
@@ -209,6 +213,6 @@ function delete_photo(){
 	 $this->picture_model->delete_user_photos($filename);
 	}
 	
-		}
+	}
 		
 		}

@@ -10,7 +10,7 @@ $(document).ready(function() {
 			});			
 		});
 </script>
-
+<?php print_r($this->session->userdata);?>
 	<div id = "slideshow">
 			<img src = <?php echo base_url("assets/Images/BR_1.jpg")?> class=bgM>
 			<img src = <?php echo base_url("assets/Images/LR_1.jpg")?> class=bgM>
