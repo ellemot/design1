@@ -10,11 +10,12 @@
 	function store_photo($data){
 		$file_name = $data['file_name'];
 		$orig_src=$data['orig_src'];
-		
+		$desc=$data['desc'];
 		$record=array(
 		'filename'=>$file_name,
 		'Orig_src'=>$orig_src,
-		'userid'=>$this->session->userdata('userid')
+		'userid'=>$this->session->userdata('userid'),
+		'Description'=>$desc
 		);
 		
 		$this->db->insert('pictures',$record);

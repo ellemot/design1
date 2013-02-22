@@ -10,7 +10,6 @@ $(document).ready(function() {
 			});			
 		});
 </script>
-<?php print_r($this->session->userdata);?>
 	<div id = "slideshow">
 			<img src = <?php echo base_url("assets/Images/BR_1.jpg")?> class=bgM>
 			<img src = <?php echo base_url("assets/Images/LR_1.jpg")?> class=bgM>
@@ -27,7 +26,7 @@ $(document).ready(function() {
 </div>
 	
 	<div class="hero_text">
-		<strong><h1 id="hero_text_1">Beautiful Design. </h1><h1 id = "hero_text_2"> Easy.</h1></strong>
+		<strong><h1 id="hero_text_1">Interior Design. </h1><h1 id = "hero_text_2"> Easy.</h1></strong>
 		
 		<p>Check out some design ideas:</P>
 		<?php echo form_open('');

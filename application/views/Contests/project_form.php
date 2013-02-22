@@ -3,10 +3,12 @@
 include(APPPATH.'/views/templates/header.php');
 ?>
 
+
+<form name="Contest" enctype = "multipart/form-data" method="post" action=<?php echo base_url('index.php/Contests/site/contest_submit');?>>
+
 <div class = "contest_form_container" id = "form_1">
 <p>Tell us about your room:</p>
 
-<form name="Contest" enctype = "multipart/form-data" method="post" action=<?php echo base_url('index.php/Contests/site/contest_submit');?>>
 <div class = "errors">
 
 <?php if(isset($error))
@@ -74,7 +76,9 @@ Add some pictures of your room - the more the better. <br><br>
 ?>
 </div>
 <div class = "right_form_photo">
+<div>
 <a class = "photo_popup1" href="#"> Add Already Uploaded</a>
+</div>
 </div>
 </div>
 </div>
@@ -90,23 +94,23 @@ Add some pictures of your room - the more the better. <br><br>
 <div class = "form_container">
 <div class = "first_row">
 <div class = "left_form_1">
-<label for="not_like" id = "not_like">What DON'T you like about your room:</label><br>
-<textarea rows="5" cols="60" name="not_like" id="not_like"></textarea>
+<label for="not_like" id = "not_like">What don't you like about the room right now:</label><br>
+<textarea rows="5" cols="50" name="not_like" id="not_like"></textarea>
 </div>
 <div class = "right_form_1">
-<label for="likes" id = "likes">What you DO like about your room:</label><br>
-<textarea rows="5" cols="60" name="likes" id="likes"></textarea>
+<label for="likes" id = "likes">Tell us more about the room:</label><br>
+<textarea rows="5" cols="50" name="likes" id="likes"></textarea>
 </div>
 </div>
 <hr class = "style"/>
 <div id = "second_row">
 
 <div class = "left_form">
-<label for="color">What colors do you like for the room:</label>
+<label for="color">What colors do you like for your room:</label>
 <textarea rows="2" cols="50" name="color" id="color"></textarea>
 </div>
 <div class = "right_form">
-<label for="style">Describe the design style you most prefer:</label>
+<label for="style">Talk about your design style:</label>
 <textarea rows="2" cols="50" name="style" id="style"></textarea>
 </div>
 </div>
@@ -116,17 +120,17 @@ Add some pictures of your room - the more the better. <br><br>
 <p>Pick the picture that most appeals to you</p>
 	<div class="design_photos">
 	<?php echo form_checkbox('Traditional', 'Traditional', set_checkbox('design', 'Traditional'), 'class = "cbox"');?>
-	<img src=<?php echo base_url('assets/Images/Traditional.jpg');?> height=200 class="design_pics">
+	<img src=<?php echo base_url('assets/Images/Traditional.jpg');?> height=150 class="design_pics">
 	</div>
 	
 	<div class="design_photos">
 	<?php echo form_checkbox('Modern', 'Modern', set_checkbox('design', 'Modern'), 'class = "cbox"');?>
-	<img src=<?php echo base_url('assets/Images/Modern.jpg');?> height=200 class="design_pics">
+	<img src=<?php echo base_url('assets/Images/Modern.jpg');?> height=150 class="design_pics">
 	</div>
 	
 	<div class="design_photos">
 	<?php echo form_checkbox('Eclectic', 'Eclectic', set_checkbox('design', 'Eclectic'), 'class = "cbox"');?>
-	<img src=<?php echo base_url('assets/Images/Eclectic.jpg');?> height=200 class="design_pics">
+	<img src=<?php echo base_url('assets/Images/Eclectic.jpg');?> height=150 class="design_pics">
 	</div>
 </div>
 
@@ -174,7 +178,8 @@ Add room inspiration photos: <br><br>
 <div id = "contest_user_photos">
 <div id = "already_uploaded">
 <br>
-<a class = "navigation1" id = "close_user_pics1">Submit</a>
+<p> Select Uploaded Pictures for Your Room</p><br>
+<a class = "navigation1" id = "close_user_pics1">Save</a>
 <br> <br>
 
 <?php
@@ -187,13 +192,13 @@ $src=$value['Orig_src'];
 	
 	echo '<div class="user_photos">';
 	echo form_checkbox('pictures[]', $filename, set_checkbox('pictures', $filename), 'class = "cbox"');
-	echo '<img src="https://s3.amazonaws.com/easableimages/'.$filename.'" height=300 class="contest_user_pics1">';
+	echo '<img src="https://s3.amazonaws.com/easableimages/'.$filename.'" height=100 class="contest_user_pics1">';
 	echo '</div>';
 }
 
 }
 
-else { echo 'You don\'t have photos uploaded'; }?>
+else { echo '<p>You don\'t have photos uploaded</p>'; }?>
 </div>
 </div>
 
@@ -202,7 +207,8 @@ else { echo 'You don\'t have photos uploaded'; }?>
 <div id = "contest_inspr_photos">
 <div id = "already_uploaded">
 <br>
-<a class = "navigation1" id = "close_user_pics2">Submit</a>
+<p> Select Uploaded Pictures for Inspiration </p><br>
+<a class = "navigation1" id = "close_user_pics2">Save</a>
 <br> <br>
 
 <?php
@@ -215,7 +221,7 @@ $src=$value['Orig_src'];
 	
 	echo '<div class="user_photos">';
 	echo form_checkbox('inspr_pics[]', $filename, set_checkbox('inspr_pics', $filename), 'class = "cbox"');
-	echo '<img src="https://s3.amazonaws.com/easableimages/'.$filename.'" height=300 class="contest_user_pics2">';
+	echo '<img src="https://s3.amazonaws.com/easableimages/'.$filename.'" height=100 class="contest_user_pics2">';
 	echo '</div>';
 }
 

@@ -12,7 +12,7 @@ Add Design Contest
 </div></a>
 </div>
 </div>
-<?php echo $this->session->userdata('userid');?> 
+
 <div class = "errors">
 
 <?php if(isset($error))
@@ -30,8 +30,8 @@ $picture= $contest['files'][0]['filename'];
 $id = $contest['contest_id'];
 
 echo '<div class = "user_photos">';
-echo '<a href ="'.base_url('index.php/Contests/site/show_contest/'.$id).'">';
-echo '<img src="https://s3.amazonaws.com/easableimages/'.$picture.'" height=300 width = 300 class="home_user_contest">';
+echo '<a class = "contest_show" href ="'.base_url('index.php/Contests/site/show_contest/'.$id).'">';
+echo '<img src="https://s3.amazonaws.com/easableimages/'.$picture.'" height=230  class="home_user_contest">';
 echo '<div id="title_contest_div"><h1 id = "title_contest">'.$name.'</h1></div>';
 echo '</a>';
 echo '</div>';
@@ -44,21 +44,21 @@ else {echo 'no picture';}}
 
 <div id = "home_photo_container">
 <br>
-<h1 id = "contest_head"><?php echo $this->session->userdata('first_name');?>, Your Inspiration Pictures: </h1><br><br>
+<h1 id = "contest_head"><?php echo $this->session->userdata('first_name');?>, Your Design Inspiration: </h1><br><br>
 <?php
 if(isset($images)):
 
 
- foreach ($images as $value) 
+foreach ($images as $value) 
 {
 $filename= $value['filename'];
 $src=$value['Orig_src'];
-	
+
 	echo '<div class="user_photos">';
 	echo '<a href="" title ="add to design board"><img class = "photo_hidden" src='.base_url('assets/Images/addicon.fw.png').'></a>';
 	echo '<a href=# title ="delete"><img class = "photo_hidden2" src='.base_url('assets/Images/delicon.fw.png').'></a>';
-	echo '<a href='.$src.'>';
-	echo '<img src="https://s3.amazonaws.com/easableimages/'.$filename.'" height=300 class="home_user_pics">';
+	if($src!=10){echo '<a class = "pic_anchor" href='.$src.'>';} else {echo '<a class = "pic_anchor" href="https://s3.amazonaws.com/easableimages/'.$filename.'">';}
+	echo '<img src="https://s3.amazonaws.com/easableimages/'.$filename.'" height=150 class="home_user_pics">';
 	echo '</a>';
 	echo '</div>';
 }
@@ -67,7 +67,7 @@ $src=$value['Orig_src'];
 
 else : ?>
 <div class = "photo_form_container">
-
+<p>Let's Get Started: Add Some Inspiration Photos</p>
 <input type = "submit" name = "photo_submit" id="upload_cancel" class = "submit" 
 value = "Cancel and Return">
 <br><br><br><br>
@@ -102,7 +102,7 @@ value = "Cancel and Return">
 
 <?php endif
 ?>
-	
+</div>
 <div id = "push"></div>
 
 <script>
@@ -142,7 +142,30 @@ $(document).ready(function(){
 		
 		
 		});
+		
+		
+	
 });
+	
+	
+$(".pic_anchor").fancybox({
+		'height'		: '80%',
+		'width'			: '50%',
+		'autoScale'     : false,
+		'transitionIn'  : 'none',
+		'transitionOut' : 'none',
+		'type'          : 'iframe'
+	});
+	
+	
+$(".contest_show").fancybox({
+		'height'		: '90%',
+		'width'			: '90%',
+		'autoScale'     : false,
+		'transitionIn'  : 'none',
+		'transitionOut' : 'none',
+		'type'          : 'iframe'
+	});
 	
 		</script>
 		

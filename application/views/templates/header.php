@@ -95,12 +95,11 @@ function fb_login(){
 					</div>
 			<div class = "nav_bar">
 			<ul class = "nav">
-				<li><a href="">Browse Designs</a></li>
-				<li><a href=<?php echo base_url('index.php/Users/site');?>>Get Your Designs</a></li>
-				<li><a href="">Post Designs</a></li>
+				<li><a href=<?php echo base_url('index.php/Users/site');?>>Your Designs & Inspiration</a></li>
+				<li><a href="">Community Inspiration</li>
 			</ul>
 			</div>
-			<div class = "banner_2">Blog Us Here</div>
+			<div class = "banner_2">.</div>
 			
 			<div id="login" style="display:none";>
 				<div class = "fancybox_div">

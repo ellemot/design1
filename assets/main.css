@@ -73,6 +73,38 @@ a {
 }
 
 
+/* Button Styling */
+.navigation1 {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color:#ededed;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#777777;
+	font-family:'Quicksand', sans-serif;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ffffff;
+}.navigation1:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+	background-color:#dfdfdf;
+}.navigation1:active {
+	position:relative;
+	top:1px;
+}
+
+
 .full_wrapper {
 	min-width: 1024px;
 	min-height: 100%;
@@ -84,8 +116,8 @@ a {
 
 /* Header */
 #fb-root{
-margin: 0;
-padding:0;
+	margin: 0;
+	padding:0;
 }
 
 .header {
@@ -129,7 +161,8 @@ a.fancybox_logout{
 	font-size: 1.2em;
 	font-family: 'Quicksand', sans-serif;
 	display: inline;
-	margin:0;}
+	margin:0;
+}
 
 a.fancybox {
 	margin-left: 30px;
@@ -227,7 +260,7 @@ padding: 20px;
 	width: 100%;
 	min-height: 100px;
 	background-image: url('Images/linen.jpg');
-	opacity:0.8;
+	opacity:0.9;
 	overflow: hidden;
 	 padding-bottom: 10px;
 	 padding-left: 0;
@@ -248,6 +281,7 @@ padding: 20px;
 .block h3{
 	font-size: 1.5em;
 	font-family: 'Quicksand', sans-serif;
+	text-shadow: 0px 1px .2px rgba(255,255,255,1);
 	margin-bottom: 5px;
 	margin-top: 20px;
 	}
@@ -385,7 +419,7 @@ padding: 20px;
 .desc_container{
 	width:100;
 	background-color: #00CCCC;
-	min-height: 300px;
+	min-height: 260px;
 	text-align:center;
 	padding:10px;
 	color: white;
@@ -396,7 +430,8 @@ padding-top:10px;
 padding-bottom: 10px;
 margin:0;
 font-family: 'Quicksand', sans-serif;
-font-size:1.7em;
+font-size:1.4em;
+text-shadow: 0px 1px 0.8px  #F5FFFA;
 }
 
 .desc_container p {
@@ -433,10 +468,11 @@ font-size: .9em;
 /* Home Page for Users */
 
 #contest_head{
-font-size: 1.7em;
+font-size: 1.4em;
 font-family: 'Quicksand', sans-serif;
 color: #00CCCC;
 margin-top: 10px;
+text-shadow: 0px 1.3px 0px rgba(255, 255, 255, 1);
 }
 
 
@@ -449,7 +485,6 @@ margin-top: 10px;
 /* Div for each photo */
 .user_photos {
 position: relative;
-height: 400px;
 margin:0;
 padding: 0;
 display: inline-block;
@@ -471,6 +506,8 @@ left: 50px;
 display: block;
 z-index:999;
 }
+
+/* For the contest section - photos */
 .home_user_contest{
 	position: relative;
 	top:0;
@@ -484,22 +521,27 @@ z-index:999;
     padding: 15px;
     margin: 20px 20px 20px 0;
 	display: inline-block;
-	font-size: 1em;
 	background-color: #ffffff;
 		}
-	
+		
+.home_user_contest:hover{
+opacity:0.5;
+}
+
+/* Title for each contest */
 #title_contest_div{
 position: absolute;
-top:300px;
+top:200px;
 background-color: white;
-width: 300px;
-height: 50px;
-padding-top: 10px;
+width: 220px;
+min-height: 20px;
+padding: 10px;
  }
 
 #title_contest{
-font-size: 1.5em;
+font-size: 1em;
 font-family: 'Quicksand', sans-serif;
+text-shadow: 0 0.5px 1px rgb(255,255,255,1);
 position:absolute;
 left: 40px;
 color: black;
@@ -518,6 +560,8 @@ color: black;
 	text-align: center;
 	}
 
+
+/* Pics divs */
 .home_user_pics, .contest_user_pics1, .contest_user_pics2{
 	position: relative;
 	top:0;
@@ -536,7 +580,7 @@ color: black;
 	background-color: #ffffff;
 	}
 	
-	
+/* Design Pics Div */
 .design_pics{
 	position: relative;
 	border: 20px solid white; 
@@ -577,6 +621,7 @@ color: black;
 	background-color:  #F8F8FF;			 
 }
 
+/* Add picture/Contest Buttons */
 #add_button_left{
 	padding: 5px;
 	margin-top: 10px;
@@ -585,6 +630,8 @@ color: black;
 	display: inline-block;
 	width: 15%;
 	border-right: 1px solid lightgray;
+	font-size: .8em;
+	text-shadow: 0px 1px 0.5px rgba(255,255,255,0.9);
 }
 
 #add_button_left img
@@ -598,6 +645,8 @@ color: black;
 	margin-left:0px;
 	display: inline-block;
 	width: 15%;
+	font-size: .8em;
+	text-shadow: 0px 1px 0.5px rgba(255,255,255,0.9);
 }
 #add_button_right img
 {
@@ -653,28 +702,6 @@ img.active {
 	background-color:  #F8F8FF;			 
 }
 
-.submit {
-	margin-left: 30px;
-	margin: 3px;
-	padding: 2px;
-	background: #ffffff;
-	border: 1px solid #888;
-	-webkit-border-radius: 2px;
-	-moz-border-radius: 2px;
-	border-radius: 2px;
-	font-size: 1.2em;
-	font-family: 'Quicksand', sans-serif;
-	color: #888;
-	display: inline;
-	-moz-box-shadow: 1px 1px 1px #888;
-	-webkit-box-shadow: 1px 1px 1px #888;
-	box-shadow: 1px 1px 1px #888;
-	height: 40px;
-	}
-	
-.submit:hover{
-	background-color:#D3D3D3;
-	}
 
 /* Photo Upload Form */
 
@@ -689,21 +716,21 @@ img.active {
 	margin-top: 20px;
 	border: 1px solid lightgray;
 	 -webkit-box-shadow: 
-    
-            0 0 16px rgba(0,0,0,0.3); 
+                0 0 16px rgba(0,0,0,0.3); 
     -moz-box-shadow: 
-     
-            0 0 16px rgba(0,0,0,0.3); 
+                0 0 16px rgba(0,0,0,0.3); 
     box-shadow: 
-      
-            0 0 16px rgba(0,0,0,0.3); 
+                0 0 16px rgba(0,0,0,0.3); 
 	
 }
 .photo_form_container p{
 	font-family: 'Quicksand', sans-serif;
-	font-size: 1.4em;
+	font-size: 1em;
 }
 
+.upload_form_container{
+padding: 15px;
+}
 
 .error {
 color: red;
@@ -715,7 +742,6 @@ font-size: .7em;
 height: 30px;
 margin-left: 40px;
 margin-top: 20px;
-background-color: #F8F8FF;
 float: left;
 }
 
@@ -738,17 +764,29 @@ float: left;
 	padding: 10px;
 	display: inline-block;
 	color: #888;
-	font-size: 1em;
+	font-size: .8em;
+	text-align: left;
 	}
 
 
 .file_hidden, #file1, #file2, #file3, #file11, #file21, #file31{
 	position:absolute;
+	top:0;
+	left:0;
 	opacity:0;
 }
 
+#photo_cover
+{ width: 270px;
+}
+
+#browse {
+margin: 0;
+padding: 11px 10px 11px 10px;
+height: 18px}
+
 .photo_form {
-	width: 40%;
+	width: 45%;
 	padding: 20px;
 	display: inline-block;
 	}
@@ -779,24 +817,26 @@ float: left;
 .contest_form_container  p  {
 padding: 25px 0 10px 0;
 font-family: 'Quicksand', sans-serif;
-font-size: 1.5em;
+font-size: 1.2em;
 }
 	
 .form_container {
-padding: 40px 10px 10px 10px;
+padding: 10px 10px 10px 10px;
 }
 
 .form_container label {
-font-family: 'quicksand'
+font-family: 'quicksand';
+font-size: .9em;
 }
 
 
 .first_row{
-margin: 0 0 20px 0;
+margin: 0 0 10px 0;
 }
 hr.style { border: 0; height: 0; border-top: 1px solid rgba(0, 0, 0, 0.1); border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+
 label#title_input{
-	font-size: 1em;
+	font-size: .9em;
 	margin: 0 10px 20px 0;
 	}
 
@@ -816,8 +856,8 @@ input#title_input{
 	width: 90%;
 	padding: 10px;
 	display: inline-block;
-	color: #888;
-	font-size: .8em;
+	color: #000;
+	font-size: .7em;
 	font-family: 'Quicksand', sans-serif;
 }
 
@@ -838,13 +878,13 @@ select#room_type{
 	width: 90%;
 	padding: 10px;
 	display: inline-block;
-	color: #888;
-	font-size: .8em;
+	color: #000;
+	font-size: .7em;
 	font-family: 'Quicksand', sans-serif;
 	}
 
 label#room_type{
-	font-size: 1em;
+	font-size: .9em;
 	margin: 0 10px 20px 30px;
 	}
 
@@ -858,14 +898,14 @@ position: relative;
 float: right;
 width: 45%;
 border-left: 1px solid lightgray;
-padding: 20px;
+padding: 10px;
 }
 
 .right_form{
 float: left;
 width: 45%;
 border-right: 1px solid lightgray;
-padding: 20px;
+padding: 10px;
 font-family: 'Quicksand', sans-serif;
 }
 
@@ -884,12 +924,27 @@ text-align: center;
 }
 
 
+.left_form_1 {
+width: 45%;
+display: inline-block;
+margin: 0 30px 0 0;
+text-align: center;	
+}
+
+
 #pictures_row , #select_row{
 clear: both;
 padding: 5px 0 0 0;
 font-family: 'Quicksand', sans-serif;
+display: block;
 
 }
+
+#pictures_row input{
+padding: 5px;
+margin: 5px;	
+}
+
 
 .design_photos{
 display: inline-block;
@@ -900,22 +955,25 @@ padding: 10px;
 background-image:url('Images/linen_bg.jpg');
 padding: 20px;}
 
-.left_form_1 {
-width: 45%;
-display: inline-block;
-margin: 0 30px 0 0;
-text-align: center;	
-}
+
 
 .left_form_photo {
 width: 45%;
 display: inline-block;
+margin:0;
+padding:0 10px 0 0 ;
+vertical-align: top;
 }
+
 
 .right_form_photo {
 width: 45%;
 display: inline-block;
+margin: 0;
+padding-top: 50px;
+vertical-align: top;
 }
+
 
 .right_form_photo a {
 color: #00CCCC;
@@ -964,35 +1022,6 @@ color: #00CCCC;
 	font-size: .8em;
 	font-family: 'Quicksand', sans-serif;}
 
-.navigation1 {
-	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
-	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
-	background-color:#ededed;
-	-moz-border-radius:6px;
-	-webkit-border-radius:6px;
-	border-radius:6px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	color:#777777;
-	font-family:'Quicksand', sans-serif;
-	font-size:15px;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:1px 1px 0px #ffffff;
-}.navigation1:hover {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
-	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
-	background-color:#dfdfdf;
-}.navigation1:active {
-	position:relative;
-	top:1px;
-}
 #next1 {
 margin: 0 0 0 800px;
 }
@@ -1005,6 +1034,10 @@ margin: 0 800px 0 0;
 }
 
 
+#already_uploaded p
+{font-family: 'Quicksand';
+margin: 10px;
+}
 
 	
 /* Floor Plan Draw */
@@ -1014,3 +1047,26 @@ margin-top: 50px; margin-bottom: 50px; }
 #imageTemp { position: absolute; top: 1px; left: 1px; border: 1px solid red;}
 
 
+
+
+input#title_input_view, select#room_type_view, textarea#likes_view, textarea#not_like_view, textarea#style_view, textarea#color_view{
+
+	border: 1px solid white; 
+    -webkit-box-shadow: 
+      inset 0 0 2px  rgba(0,0,0,0.3),
+            0 0 3px rgba(0,0,0,0.3); 
+    -moz-box-shadow: 
+      inset 0 0 2px  rgba(0,0,0,0.3),
+            0 0 3px rgba(0,0,0,0.3); 
+    box-shadow: 
+     inset 0 0 2px  rgba(0,0,0,0.3),
+            0 0 3px rgba(0,0,0,0.3); 
+    background: rgba(255,255,255,0.3);
+    margin: 10px 10px 10px 0;
+	width: 90%;
+	padding: 10px;
+	display: inline-block;
+	color: #000;
+	font-size: .8em;
+	font-family: 'Quicksand', sans-serif;
+}

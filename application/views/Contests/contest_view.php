@@ -1,7 +1,15 @@
-<?php 
+<link href='http://fonts.googleapis.com/css?family=Julius+Sans+One' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Quicksand|Imprima' rel='stylesheet' type='text/css'>
+	
+	<link rel="stylesheet" href=<?php echo base_url("assets/Scripts/jquery.fancybox.css")?> type="text/css" media="screen" />
+	<link rel="stylesheet" type="text/css" href=<?php echo base_url("assets/main.css");?> />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
+	<script type="text/javascript" src=<?php echo base_url("assets/Scripts/jquery.cycle.js")?>></script>
+	<script type="text/javascript" src=<?php echo base_url("assets/Scripts/jquery.fancybox.js")?>></script>
+	<script type="text/javascript" src=<?php echo base_url("assets/Scripts/jquery.fancybox.pack.js")?>></script>
+		
 
-include(APPPATH.'/views/templates/header.php');
-?>
+
 <?php
 $id =  $contest_data[0]['id'];
 $name = $contest_data[0]['contest_name'];
@@ -15,11 +23,11 @@ $modern = $contest_data[0]['modern'];
 $traditional = $contest_data[0]['traditional'];
 $eclectic = $contest_data[0]['eclectic'];
 ?>
-
+<br><br><br>
 <div class = "contest_form_container" id = "form_1">
-<p>Tell us about your room:</p>
+<p>Room Details:</p>
 
-<form name="Contest" enctype = "multipart/form-data" method="post" action=''?>>
+<form name="Contest" enctype = "multipart/form-data" method="post" action=''>
 <div class = "errors">
 
 <?php if(isset($error))
@@ -29,13 +37,13 @@ $eclectic = $contest_data[0]['eclectic'];
 <div class = "form_container" id = "form_1">
 <div class = "first_row">
 <div class = "left_form_1">
-<label for="name" id = "title_input">Name your Contest:</label><br>
-<input type="text" name="name" value="<?php echo $name; ?>" id="title_input" maxlength="30" onfocus='value=""' 
+<label for="name" id = "title_input">Contest Name:</label><br>
+<input type="text" name="name" value="<?php echo $name; ?>" id="title_input_view" maxlength="30" onfocus='value=""' 
 />
 </div>
 <div class = "right_form_1">
 <label for="room_type" id = "room_type">Type of Room:</label><br>
-<select name="room_type" id="room_type">
+<select name="room_type" id="room_type_view">
 	<option value="living_room" <?php if ($room_type == "living_room") {echo 'selected="selected"';}?>>Living Room</option>
 	<option value="bedroom" <?php if ($room_type == "bedroom") {echo 'selected="selected"';}?>>Bedroom</option>
 	<option value="dining_room"<?php if ($room_type == "dining_room") {echo 'selected="selected"';}?>>Dining Room</option>
@@ -71,7 +79,6 @@ Pictures of Your Room: <br><br>
 </div>
 	</div>
 
-<a href = # class = "navigation1" id = "next1" >Next: Your Style</a>
 </div>
 
 
@@ -81,23 +88,23 @@ Pictures of Your Room: <br><br>
 <div class = "form_container">
 <div class = "first_row">
 <div class = "left_form_1">
-<label for="not_like" id = "not_like">What DONT you like about your room:</label><br>
-<textarea rows="5" cols="60" name="not_like" id="not_like"><?php echo $likes;?></textarea>
+<label for="not_like" id = "not_like">What don't you like about your room:</label><br>
+<textarea rows="5" cols="60" name="not_like" id="not_like_view"><?php echo $likes;?></textarea>
 </div>
 <div class = "right_form_1">
-<label for="likes" id = "likes">What you DO like about your room:</label><br>
-<textarea rows="5" cols="60" name="likes" id="likes" ><?php echo $not_likes;?></textarea>
+<label for="likes" id = "likes">Describe the room and its use:</label><br>
+<textarea rows="5" cols="60" name="likes" id="likes_view" ><?php echo $not_likes;?></textarea>
 </div>
 </div>
 <div id = "second_row">
 <hr class = "style"/>
 <div class = "left_form">
 <label for="color">What colors do you like for the room:</label>
-<textarea rows="2" cols="50" name="color" id="color"><?php echo $colors;?></textarea>
+<textarea rows="2" cols="50" name="color" id="color_view"><?php echo $colors;?></textarea>
 </div>
 <div class = "right_form">
 <label for="style">Describe the design style you most prefer:</label>
-<textarea rows="2" cols="50" name="style" id="style" ><?php echo $style;?></textarea>
+<textarea rows="2" cols="50" name="style" id="style_view" ><?php echo $style;?></textarea>
 </div>
 </div>
 <div id = "select_row">
@@ -118,7 +125,7 @@ Your Inspiration Photos: <br><br>
 <?php foreach ($contest_files_insp as $file)
 { 
 	$filename =  $file['filename'];
-	echo '<img src="https://s3.amazonaws.com/easableimages/'.$filename.'" height = 200px class = "home_user_pics">';
+	echo '<img src="https://s3.amazonaws.com/easableimages/'.$filename.'" height = 100px class = "home_user_pics">';
 }
 ?>
 
@@ -126,8 +133,6 @@ Your Inspiration Photos: <br><br>
 </div>
 </div>
 	
-<a href = # class = "navigation1" id = "prev2" >Back: Your Room</a>
-
 
 </div>
 
@@ -138,23 +143,24 @@ Your Inspiration Photos: <br><br>
 <br> <br>
 
 <?php
-if(isset($images)){
+// if(isset($images)){
 
- foreach ($images as $value) 
-{
-$filename= $value['filename'];
-$src=$value['Orig_src'];
+ // foreach ($images as $value) 
+// {
+// $filename= $value['filename'];
+// $src=$value['Orig_src'];
 	
-	echo '<div class="user_photos">';
-	echo form_checkbox('pictures[]', $filename, set_checkbox('pictures', $filename), 'class = "cbox"');
-	echo '<img src="https://s3.amazonaws.com/easableimages/'.$filename.'" height=300 class="contest_user_pics1">';
-	echo '</a>';
-	echo '</div>';
-}
+	// echo '<div class="user_photos">';
+	// echo form_checkbox('pictures[]', $filename, set_checkbox('pictures', $filename), 'class = "cbox"');
+	// echo '<img src="https://s3.amazonaws.com/easableimages/'.$filename.'" height=300 class="contest_user_pics1">';
+	// echo '</a>';
+	// echo '</div>';
+// }
 
-}
+// }
 
-else { echo 'You don\'t have photos uploaded'; }?>
+// else { echo 'You don\'t have photos uploaded'; }
+?>
 </div>
 </div>
 
@@ -167,23 +173,24 @@ else { echo 'You don\'t have photos uploaded'; }?>
 <br> <br>
 
 <?php
-if(isset($images)){
+// if(isset($images)){
 
- foreach ($images as $value) 
-{
-$filename= $value['filename'];
-$src=$value['Orig_src'];
+ // foreach ($images as $value) 
+// {
+// $filename= $value['filename'];
+// $src=$value['Orig_src'];
 	
-	echo '<div class="user_photos">';
-	echo form_checkbox('inspr_pics[]', $filename, set_checkbox('inspr_pics', $filename), 'class = "cbox"');
-	echo '<img src="https://s3.amazonaws.com/easableimages/'.$filename.'" height=300 class="contest_user_pics2">';
-	echo '</a>';
-	echo '</div>';
-}
+	// echo '<div class="user_photos">';
+	// echo form_checkbox('inspr_pics[]', $filename, set_checkbox('inspr_pics', $filename), 'class = "cbox"');
+	// echo '<img src="https://s3.amazonaws.com/easableimages/'.$filename.'" height=300 class="contest_user_pics2">';
+	// echo '</a>';
+	// echo '</div>';
+// }
 
-}
+// }
 
-else { echo 'You don\'t have photos uploaded'; }?>
+// else { echo 'You don\'t have photos uploaded'; }
+?>
 </div>
 </div>
 </form>				
@@ -191,65 +198,64 @@ else { echo 'You don\'t have photos uploaded'; }?>
 
 	
 	$(document).ready(function(){
-		$("#form_2").hide();
 		$("#contest_user_photos").hide();
 		$("#contest_inspr_photos").hide();
 		});
 	
-	$(".contest_user_pics1").click(function(){
-		$(this).toggleClass('active');
-		var checkbox = $(this).parent().find('.cbox');
-		checkbox.attr('checked', !checkbox.attr('checked'));
-		});
+	// $(".contest_user_pics1").click(function(){
+		// $(this).toggleClass('active');
+		// var checkbox = $(this).parent().find('.cbox');
+		// checkbox.attr('checked', !checkbox.attr('checked'));
+		// });
 		
-	$(".contest_user_pics2").click(function(){
-		$(this).toggleClass('active');
-		var checkbox = $(this).parent().find('.cbox');
-		checkbox.attr('checked', !checkbox.attr('checked'));
-		});
+	// $(".contest_user_pics2").click(function(){
+		// $(this).toggleClass('active');
+		// var checkbox = $(this).parent().find('.cbox');
+		// checkbox.attr('checked', !checkbox.attr('checked'));
+		// });
 		
 			
-	$("#next1").click(function(){
-		$("#form_2").show();
-		$("#form_1").hide();
-		$("#contest_user_photos").hide();
-		$("#contest_inspr_photos").hide();
-	});
+	// $("#next1").click(function(){
+		// $("#form_2").show();
+		// $("#form_1").hide();
+		// $("#contest_user_photos").hide();
+		// $("#contest_inspr_photos").hide();
+	// });
 		
-	$("#prev2").click(function(){
-		$("#form_2").hide();
-		$("#form_1").show();
-	 $("#contest_user_photos").hide();
-	 $("#contest_inspr_photos").hide();
-	});	
+	// $("#prev2").click(function(){
+		// $("#form_2").hide();
+		// $("#form_1").show();
+	 // $("#contest_user_photos").hide();
+	 // $("#contest_inspr_photos").hide();
+	// });	
 	
-	$(".photo_popup1").click(function(){
-		$("#form_2").hide();
-		$("#form_1").hide();
-		$("#contest_user_photos").show();
-		$("#contest_inspr_photos").hide();
-	});	
+	// $(".photo_popup1").click(function(){
+		// $("#form_2").hide();
+		// $("#form_1").hide();
+		// $("#contest_user_photos").show();
+		// $("#contest_inspr_photos").hide();
+	// });	
 	
-	$(".photo_popup2").click(function(){
-		$("#form_2").hide();
-		$("#form_1").hide();
-		$("#contest_user_photos").hide();
-		$("#contest_inspr_photos").show();
-	});	
+	// $(".photo_popup2").click(function(){
+		// $("#form_2").hide();
+		// $("#form_1").hide();
+		// $("#contest_user_photos").hide();
+		// $("#contest_inspr_photos").show();
+	// });	
 	
-	$("#close_user_pics1").click(function(){
-		$("#form_2").hide();
-		$("#form_1").show();
-		$("#contest_user_photos").hide();
-		$("#contest_inspr_photos").hide();
-	});	
+	// $("#close_user_pics1").click(function(){
+		// $("#form_2").hide();
+		// $("#form_1").show();
+		// $("#contest_user_photos").hide();
+		// $("#contest_inspr_photos").hide();
+	// });	
 	
-	$("#close_user_pics2").click(function(){
-		$("#form_1").hide();
-		$("#form_2").show();
-		$("#contest_user_photos").hide();
-		$("#contest_inspr_photos").hide();
-	});	
+	// $("#close_user_pics2").click(function(){
+		// $("#form_1").hide();
+		// $("#form_2").show();
+		// $("#contest_user_photos").hide();
+		// $("#contest_inspr_photos").hide();
+	// });	
 	
 	
 	$("#file1").change(function(){
@@ -291,7 +297,3 @@ else { echo 'You don\'t have photos uploaded'; }?>
 	
 </script>	
 
-
-<?php
-$this->load->view('templates/footer');
-?>

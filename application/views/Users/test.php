@@ -1,12 +1,13 @@
 
 <?php
 include(APPPATH.'/views/templates/header.php');
+$this->session->keep_flashdata('desc');
 ?>
 <div id = "select_photo_nav">
 <div id="button_container"> 
-<input type = "submit" name = "photo_submit" id="photo_submit" class = "submit" 
+<input type = "submit" name = "photo_submit" id="photo_submit" class = "navigation1" 
 value = "Submit Selected">
-<input type = "submit" name = "photo_submit" id="photo_cancel" class = "submit" 
+<input type = "submit" name = "photo_submit" id="photo_cancel" class = "navigation1" 
 value = "Cancel and Return">
 </div>
 </div>

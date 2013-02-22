@@ -28,6 +28,12 @@ $this->load->view('Users/upload_form');
 		
 		if (isset($_POST['submit'])) 
 		{
+			$desc=$this->input->post('desc');
+			if ($desc!="Description"&&$desc!="")
+			{$data['desc']=$desc;}
+			else { $data['desc']=NULL;}
+			
+			
 			$data['file']=$_FILES["file"];
 			
 			$allowedExts = array("jpg", "jpeg", "gif", "png");
@@ -62,9 +68,10 @@ $this->load->view('Users/upload_form');
 												if($s3result) {
 													$data['file_name']=$file_name;
 													$data['orig_src']=10;
+											
 													$this->picture_model->store_photo($data);
 													$data['error']='Successfully Uploaded Photo';
-													$this->load->view('users/site');
+													redirect(base_url('index.php/Users/site'));
 													}
 												else {
 													$data['error']='Unable to Upload';
@@ -100,6 +107,13 @@ function set_file_name()
 		
 function photo_link() {
 
+$desc=$this->input->post('desc');
+			if ($desc!="Description"&&$desc!="")
+			{$desc=$desc;}
+			else { $desc=NULL;}
+			
+			$this->session->set_flashdata('desc',$desc);
+			
 	require_once(APPPATH.'/url_to_absolute_2.php');
 	require_once(APPPATH.'simple_html_dom.php');
 	$this->image_path= realpath(APPPATH.'/images');
@@ -140,6 +154,7 @@ if (isset($_POST['submit1']))
 	if($s3result) {
 		$data['file_name']=$file_name;
 		$data['orig_src']=$link;
+		$data['desc']=$desc;
 		$this->picture_model->store_photo($data);	
 		unlink($file_location);
 		}
@@ -203,6 +218,7 @@ if (isset($_POST['submit1']))
 	
 function upload_photo_link()
 {
+	
 	$this->image_path= realpath(APPPATH.'/images');
 	$images =json_decode($_POST['images']);
 			
@@ -231,6 +247,7 @@ function upload_photo_link()
 			
 	//if s3 responds with something return 1 to the site page view
 	if($s3result) {
+		$data['desc']=$this->session->flashdata('desc');
 		$data['file_name']=$file_name;
 		$data['orig_src']=$image;
 		$this->picture_model->store_photo($data);	
