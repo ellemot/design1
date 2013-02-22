@@ -17,7 +17,10 @@ function upload_form($data){
 	'renovation'=>$data['renovation'],
 	'not_likes'=>$data['not_likes'],
 	'colors'=>$data['colors'],
-	'style'=>$data['style']
+	'style'=>$data['style'],
+	'modern'=>$data['modern'],
+	'traditional'=>$data['traditional'],
+	'eclectic'=>$data['eclectic']
 	);
 	$this->db->insert('contests', $insert);
 
@@ -36,7 +39,7 @@ $this->db->insert('picture_map',$insert);
 	}
 	
 	
-	function set_map_inspiration($id) {
+function set_map_inspiration($id) {
 $insert = array(
 'picture_id'=>$id['pictureid'],
 'contest_id'=> $id['contestid'],
@@ -66,7 +69,7 @@ $this->db->insert('picture_map',$insert);
 
 	
 function get_contest($contest_id) {
-		$this->db->where('contest_id', $contest_id);
+		$this->db->where('id', $contest_id);
 		$query=$this->db->get('contests');
 	
 		if ($query->num_rows()>0)
@@ -80,9 +83,14 @@ function get_contest($contest_id) {
 
 
 function get_contest_photos($contest_id) {
-	$sql = "SELECT filename FROM Pictures p JOIN Picture_map pm ON p.id = pm.picture_id WHERE pm.contest_id = ?";
+	$sql = "SELECT filename FROM Pictures p JOIN Picture_map pm ON p.id = pm.picture_id WHERE pm.contest_id = ? and pm.type='inspiration'";
 	$query = $this->db->query($sql,$contest_id); 
 	return $query->result_array();
 	}
 	
+function get_contest_photos_current($contest_id) {
+	$sql = "SELECT filename FROM Pictures p JOIN Picture_map pm ON p.id = pm.picture_id WHERE pm.contest_id = ? and pm.type='current'";
+	$query = $this->db->query($sql,$contest_id); 
+	return $query->result_array();
+	}
 	}

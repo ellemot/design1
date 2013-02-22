@@ -115,17 +115,17 @@ Add some pictures of your room - the more the better. <br><br>
 <hr class = "style"/>
 <p>Pick the picture that most appeals to you</p>
 	<div class="design_photos">
-	<?php echo form_checkbox('designs[]', 'Traditional', set_checkbox('design', 'Traditional'), 'class = "cbox"');?>
+	<?php echo form_checkbox('Traditional', 'Traditional', set_checkbox('design', 'Traditional'), 'class = "cbox"');?>
 	<img src=<?php echo base_url('assets/Images/Traditional.jpg');?> height=200 class="design_pics">
 	</div>
 	
 	<div class="design_photos">
-	<?php echo form_checkbox('designs[]', 'Modern', set_checkbox('design', 'Modern'), 'class = "cbox"');?>
+	<?php echo form_checkbox('Modern', 'Modern', set_checkbox('design', 'Modern'), 'class = "cbox"');?>
 	<img src=<?php echo base_url('assets/Images/Modern.jpg');?> height=200 class="design_pics">
 	</div>
 	
 	<div class="design_photos">
-	<?php echo form_checkbox('designs[]', 'Eclectic', set_checkbox('design', 'Eclectic'), 'class = "cbox"');?>
+	<?php echo form_checkbox('Eclectic', 'Eclectic', set_checkbox('design', 'Eclectic'), 'class = "cbox"');?>
 	<img src=<?php echo base_url('assets/Images/Eclectic.jpg');?> height=200 class="design_pics">
 	</div>
 </div>

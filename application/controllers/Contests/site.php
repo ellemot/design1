@@ -26,6 +26,15 @@ function index()
 	
 }
 
+function show_contest(){
+$contest_id = $this->uri->segment (4);
+$data['contest_data']=$this->contest_model->get_contest($contest_id);
+$data['contest_files_insp']=$this->contest_model->get_contest_photos($contest_id);
+$data['contest_files_curr']=$this->contest_model->get_contest_photos_current($contest_id);
+$this->load->view('Contests/Contest_view', $data);
+}
+
+
 
 function floor_plan_show()
 
@@ -48,9 +57,36 @@ function contest_submit()
 		$data['not_likes']=$this->input->post('not_like');
 		$data['colors']=$this->input->post('color');
 		$data['style']=$this->input->post('style');
+		
+			$modern = $this->input->post('Modern');
+			if($modern)
+			{$data['modern']='yes';}
+			else {$data['modern']=NULL;}
+			
+			$traditional = $this->input->post('Traditional');
+			if($traditional)
+			{$data['traditional']='yes';}
+			else {$data['traditional']=NULL;}
+			
+			$eclectic = $this->input->post('Eclectic');
+			if($eclectic)
+			{$data['eclectic']='yes';}
+			else {$data['eclectic']=NULL;}
+			
 			
 		
 		$id['contestid']=$this->contest_model->upload_form($data);
+		
+		if (!empty($_POST['designs']))
+			{
+				foreach($_POST['designs'] as $design){
+					$filename = $design;
+					$data['pictureid'] = $this->picture_model->get_pictureid($filename);
+					$id['pictureid']=$data['pictureid'][0]['id'];
+					$this->contest_model->set_map_inspiration($id);
+					
+					}
+				}
 		
 		
 		
@@ -215,7 +251,7 @@ function contest_submit()
 				
 				
 				
-		$this->load->view('Contests/test',$data);
+		redirect(base_url('index.php/Users/site'));
 		
 	}
 	}

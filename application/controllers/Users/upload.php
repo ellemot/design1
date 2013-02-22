@@ -108,11 +108,50 @@ if (isset($_POST['submit1']))
 	{
 	
 	$value = $_POST['weblink'];
-	if($value !='http://')
+	if($value !='http://'&&$value!="")
 	{
 			$images = array();
 			$link = trim($this->input->post('weblink'));
-							
+				
+		 if(preg_match("/https?/", $link) == 0)
+		 { $link = 'http://'.$link;}
+		
+		$link_ext = end(explode('.', $link));
+		if ($link_ext =='jpg'||$link_ext=='png'||$link_ext == 'pjpeg'||$link_ext =='jpeg'||$link_ext=='bmp') {
+		$this->image_path= realpath(APPPATH.'/images');
+		$file_name = $this->set_file_name();
+	//continue getting file names until get new one
+	if ($file_name==0)
+		{
+		$file_name=$this->set_file_name();
+		}
+	//place to store image temporarily
+	
+	$file_name = $file_name.'.'.$link_ext;
+			
+	$file_location = $this->image_path.'/'.$file_name;
+	copy($link, $file_location);
+			
+	//initiate bucket
+	$this->s3->putBucket('EasableImages', S3::ACL_PUBLIC_READ);
+	$s3result=$this->s3->putObjectFile($file_location,'EasableImages',$file_name, S3::ACL_PUBLIC_READ);
+			
+	//if s3 responds with something return 1 to the site page view
+	if($s3result) {
+		$data['file_name']=$file_name;
+		$data['orig_src']=$link;
+		$this->picture_model->store_photo($data);	
+		unlink($file_location);
+		}
+	else {
+			return 0;
+		}	
+	
+	redirect(base_url('index.php/Users/site'));
+	}		
+		
+	else {
+			
 		try{
 			$html = file_get_html(urldecode(trim($link)));
 		}
@@ -148,7 +187,7 @@ if (isset($_POST['submit1']))
 			}//end foreach
 		$data['images']=$images;
 		$this->load->view('Users/test',$data);
-		}
+		} }
 	else
 	{ 	
 		$data['error']='No url entered, please enter';
@@ -159,7 +198,8 @@ if (isset($_POST['submit1']))
 	$data['error']='Please Hit Submit';
 	redirect(base_url('index.php/Users/upload_form'),$data);
 	}
-}	
+	}
+	
 	
 function upload_photo_link()
 {

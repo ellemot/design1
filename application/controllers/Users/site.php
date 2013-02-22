@@ -19,6 +19,7 @@ Class Site extends CI_Controller {
 	$userid =$this->session->userdata('userid');
 	$query['contests']=$this->contest_model->get_user_contests($userid);
 	$data['contest_pics']=array();
+	if(!empty($query['contests'])){
 	foreach ($query['contests'] as $contest)
 	{
 		$contest_id = $contest['id'];
@@ -28,7 +29,7 @@ Class Site extends CI_Controller {
 		
 		$data['contest_pics'][$contest_id]['files']=$this->contest_model->get_contest_photos($contest_id);
 	}
-		
+	}	
 	
 	$data['images'] = $this->picture_model->get_user_photos($userid);
 	

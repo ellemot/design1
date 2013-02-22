@@ -3,13 +3,23 @@
 include(APPPATH.'/views/templates/header.php');
 ?>
 <?php
-
-
+$id =  $contest_data[0]['id'];
+$name = $contest_data[0]['contest_name'];
+$room_type = $contest_data[0]['room_type'];
+$reno_check = $contest_data[0]['renovation'];
+$likes =  $contest_data[0]['likes'];
+$not_likes =  $contest_data[0]['not_likes'];
+$colors = $contest_data[0]['colors'];
+$style = $contest_data[0]['style'];
+$modern = $contest_data[0]['modern'];
+$traditional = $contest_data[0]['traditional'];
+$eclectic = $contest_data[0]['eclectic'];
+?>
 
 <div class = "contest_form_container" id = "form_1">
 <p>Tell us about your room:</p>
 
-<form name="Contest" enctype = "multipart/form-data" method="post" action=<?php echo base_url('index.php/Contests/site/contest_submit');?>>
+<form name="Contest" enctype = "multipart/form-data" method="post" action=''?>>
 <div class = "errors">
 
 <?php if(isset($error))
@@ -20,17 +30,17 @@ include(APPPATH.'/views/templates/header.php');
 <div class = "first_row">
 <div class = "left_form_1">
 <label for="name" id = "title_input">Name your Contest:</label><br>
-<input type="text" name="name" value="Contest Name" id="title_input" maxlength="30" onfocus='value=""' 
+<input type="text" name="name" value="<?php echo $name; ?>" id="title_input" maxlength="30" onfocus='value=""' 
 />
 </div>
 <div class = "right_form_1">
 <label for="room_type" id = "room_type">Type of Room:</label><br>
 <select name="room_type" id="room_type">
-	<option value="living_room">Living Room</option>
-	<option value="bedroom" selected="selected">Bedroom</option>
-	<option value="dining_room">Dining Room</option>
-	<option value="study">Study</option>
-	<option value="basement">Basement</option>
+	<option value="living_room" <?php if ($room_type == "living_room") {echo 'selected="selected"';}?>>Living Room</option>
+	<option value="bedroom" <?php if ($room_type == "bedroom") {echo 'selected="selected"';}?>>Bedroom</option>
+	<option value="dining_room"<?php if ($room_type == "dining_room") {echo 'selected="selected"';}?>>Dining Room</option>
+	<option value="study" <?php if ($room_type == "study") {echo 'selected="selected"';}?>>Study</option>
+	<option value="basement" <?php if ($room_type == "basement") {echo 'selected="selected"';}?>>>Basement</option>
 </select>
 </div>
 </div>
@@ -38,7 +48,7 @@ include(APPPATH.'/views/templates/header.php');
 <hr class = "style"/>
 <div class = "left_form">
 <label for="reno_check">Is This a Renovation Project?</label>
-<input type="checkbox" name="reno_check" id="reno_check" value="Yes" checked="checked" />
+<input type="checkbox" name="reno_check" id="reno_check" value="Yes" <?php if($reno_check =="yes") {echo 'checked = "checked"';}?> />
 </div>
 <div class = "right_form">
 <a href = <?php echo base_url('index.php/Contests/site/floor_plan_show');?> id ="floordraw_anchor">Draw a Floor Plan</a>
@@ -50,35 +60,13 @@ or <a href = "#floorupload" id = "floorupload_anchor">Upload a Floor Plan</a>
 
 <hr class = "style"/>
 <div id = "background_photo_form">
-Add some pictures of your room - the more the better. <br><br>
-<div class = "left_form_photo">
-<?php echo '<div>';
-	echo form_input('room_photo_hide',"", 'id="file1hide"' );?>
-	<a class = "navigation1" onclick = '$("#file1").click();'>Browse</a>
-	<?php
-	echo form_upload("room_photo[]",'Browse for a file','id = "file1"', 'class="file_hidden"');
-	echo '</div>';
+Pictures of Your Room: <br><br>
+<?php foreach ($contest_files_curr as $file)
+{ 
+	$filename =  $file['filename'];
+	echo '<img src="https://s3.amazonaws.com/easableimages/'.$filename.'" height = 200px class = "home_user_pics">';
+}
 ?>
-
-<?php echo '<div>';
-	echo form_input('room_photo_hide',"", 'id="file2hide"' );?>
-	<a class = "navigation1" onclick = '$("#file2").click();'>Browse</a>
-	<?php
-	echo form_upload("room_photo[]",'Browse for a file','id = "file2"', 'class="file_hidden"');
-	echo '</div>';
-?>
-
-<?php echo '<div>';
-	echo form_input('room_photo_hide',"", 'id="file3hide"' );?>
-	<a class = "navigation1" onclick = '$("#file3").click();'>Browse</a>
-	<?php
-	echo form_upload("room_photo[]",'Browse for a file','id = "file3"', 'class="file_hidden"');
-	echo '</div>';
-?>
-</div>
-<div class = "right_form_photo">
-<a class = "photo_popup1" href="#"> Add Already Uploaded</a>
-</div>
 </div>
 </div>
 	</div>
@@ -93,64 +81,53 @@ Add some pictures of your room - the more the better. <br><br>
 <div class = "form_container">
 <div class = "first_row">
 <div class = "left_form_1">
-<label for="not_like" id = "not_like">What DON'T you like about your room:</label><br>
-<textarea rows="5" cols="60" name="not_like" id="not_like"></textarea>
+<label for="not_like" id = "not_like">What DONT you like about your room:</label><br>
+<textarea rows="5" cols="60" name="not_like" id="not_like"><?php echo $likes;?></textarea>
 </div>
 <div class = "right_form_1">
 <label for="likes" id = "likes">What you DO like about your room:</label><br>
-<textarea rows="5" cols="60" name="likes" id="likes"></textarea>
+<textarea rows="5" cols="60" name="likes" id="likes" ><?php echo $not_likes;?></textarea>
 </div>
 </div>
 <div id = "second_row">
 <hr class = "style"/>
 <div class = "left_form">
 <label for="color">What colors do you like for the room:</label>
-<textarea rows="2" cols="50" name="color" id="color"></textarea>
+<textarea rows="2" cols="50" name="color" id="color"><?php echo $colors;?></textarea>
 </div>
 <div class = "right_form">
 <label for="style">Describe the design style you most prefer:</label>
-<textarea rows="2" cols="50" name="style" id="style"></textarea>
+<textarea rows="2" cols="50" name="style" id="style" ><?php echo $style;?></textarea>
 </div>
 </div>
-
+<div id = "select_row">
+<hr class = "style"/>
+<p>The style you most like</p>
+<?php 
+if($modern!=NULL){echo '<img src="'.base_url('assets/Images/Modern.jpg').'" height=200 class="design_pics">';}
+if($traditional!=NULL){echo '<img src="'.base_url('assets/Images/Traditional.jpg').'" height=200 class="design_pics">';}
+if($eclectic!=NULL){echo '<img src="'.base_url('assets/Images/Eclectic.jpg').'" height=200 class="design_pics">';}
+?>
+</div>
 <div id = "pictures_row">
 
 <hr class = "style"/>
 <div id = "background_photo_form">
-Add room inspiration photos: <br><br>
-<div class = "left_form_photo">
-<?php echo '<div>';
-	echo form_input('room_photo_hide',"", 'id="file11hide"' );?>
-	<a class = "navigation1" onclick = '$("#file11").click();'>Browse</a>
-	<?php
-	echo form_upload("inspr_photo[]",'Browse for a file','id = "file11"', 'class="file_hidden"');
-	echo '</div>';
+Your Inspiration Photos: <br><br>
+
+<?php foreach ($contest_files_insp as $file)
+{ 
+	$filename =  $file['filename'];
+	echo '<img src="https://s3.amazonaws.com/easableimages/'.$filename.'" height = 200px class = "home_user_pics">';
+}
 ?>
 
-<?php echo '<div>';
-	echo form_input('room_photo_hide',"", 'id="file21hide"' );?>
-	<a class = "navigation1" onclick = '$("#file21").click();'>Browse</a>
-	<?php
-	echo form_upload("inspr_photo[]",'Browse for a file','id = "file21"', 'class="file_hidden"');
-	echo '</div>';
-?>
-
-<?php echo '<div>';
-	echo form_input('room_photo_hide',"", 'id="file31hide"' );?>
-	<a class = "navigation1" onclick = '$("#file31").click();'>Browse</a>
-	<?php
-	echo form_upload("inspr_photo[]",'Browse for a file','id = "file31"', 'class="file_hidden"');
-	echo '</div>';
-?>
-</div>
-<div class = "right_form_photo">
-<a class = "photo_popup2" href="#"> Add Already Uploaded</a>
 </div>
 </div>
 </div>
-	</div>
+	
 <a href = # class = "navigation1" id = "prev2" >Back: Your Room</a>
-<input type="submit" value="Submit Form" class = "navigation1" id = "submit" />
+
 
 </div>
 

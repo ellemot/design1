@@ -19,7 +19,7 @@ Add Design Contest
 {echo $error;}
 ?>
 </div>
-<?php if ($contest_pics):?>
+<?php if (isset($contest_pics)):?>
 <div id = "home_contest_container">
 <h1 id = "contest_head"><?php echo $this->session->userdata('first_name');?>, Your Current Contests:</h1>
 <?PHP
@@ -27,10 +27,13 @@ foreach($contest_pics as $contest) {
 if (!empty($contest['files'])){
 $name= $contest['contest_name'];
 $picture= $contest['files'][0]['filename'];
+$id = $contest['contest_id'];
 
 echo '<div class = "user_photos">';
+echo '<a href ="'.base_url('index.php/Contests/site/show_contest/'.$id).'">';
 echo '<img src="https://s3.amazonaws.com/easableimages/'.$picture.'" height=300 width = 300 class="home_user_contest">';
 echo '<div id="title_contest_div"><h1 id = "title_contest">'.$name.'</h1></div>';
+echo '</a>';
 echo '</div>';
 
 }
@@ -43,7 +46,7 @@ else {echo 'no picture';}}
 <br>
 <h1 id = "contest_head"><?php echo $this->session->userdata('first_name');?>, Your Inspiration Pictures: </h1><br><br>
 <?php
-if($images!=0):
+if(isset($images)):
 
 
  foreach ($images as $value) 
