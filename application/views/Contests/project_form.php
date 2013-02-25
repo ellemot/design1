@@ -183,7 +183,7 @@ Add room inspiration photos: <br><br>
 <br> <br>
 
 <?php
-if(isset($images)){
+if(isset($images)&&$images!=0&&!empty($images)){
 
  foreach ($images as $value) 
 {
@@ -212,7 +212,7 @@ else { echo '<p>You don\'t have photos uploaded</p>'; }?>
 <br> <br>
 
 <?php
-if(isset($images)){
+if(isset($images)&&$images!=0&&!empty($images)){
 
  foreach ($images as $value) 
 {

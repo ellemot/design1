@@ -38,10 +38,19 @@
 	
 	function get_user_photos($userid) {
 		$data = array();
-		$this->db->where('userid', $userid);
-		$this->db->limit(20);
-		$this->db->order_by("timestamp", "desc"); 
-		$query=$this->db->get('pictures');
+		
+		$sql='SELECT p.* from pictures p 
+		where userid = 6 and id not in 
+		(SELECT picture_id from picture_map pm
+		join contests c on pm.contest_id = c.id
+		where c.userid = 6 and pm.type = "current")';
+		
+		$query=$this->db->query($sql, array($userid, $userid));
+		
+		// $this->db->where('userid', $userid);
+		// $this->db->limit(20);
+		// $this->db->order_by("timestamp", "desc"); 
+		// $query=$this->db->get('pictures');
 	
 		if ($query->num_rows()>0)
 			{

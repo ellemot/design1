@@ -36,7 +36,7 @@ $this->load->view('Users/upload_form');
 			
 			$data['file']=$_FILES["file"];
 			
-			$allowedExts = array("jpg", "jpeg", "gif", "png");
+			$allowedExts = array("jpg", "jpeg", "gif", "png", "JPG", "PNG", "JPEG", "GIF");
 			$extension = end(explode(".", $_FILES["file"]["name"]));
 			if ((($_FILES["file"]["type"] == "image/gif")
 			|| ($_FILES["file"]["type"] == "image/jpeg")

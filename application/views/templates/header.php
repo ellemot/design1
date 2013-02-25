@@ -11,12 +11,12 @@
 	
 	<link rel="stylesheet" href=<?php echo base_url("assets/Scripts/jquery.fancybox.css")?> type="text/css" media="screen" />
 	<link rel="stylesheet" type="text/css" href=<?php echo base_url("assets/main.css");?> />
+	<script type="text/javascript" src=<?php echo base_url("assets/Scripts/jquery-1.9.js")?>></script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.3.min.js"></script>
 	<script type="text/javascript" src=<?php echo base_url("assets/Scripts/jquery.cycle.js")?>></script>
 	<script type="text/javascript" src=<?php echo base_url("assets/Scripts/jquery.fancybox.js")?>></script>
 	<script type="text/javascript" src=<?php echo base_url("assets/Scripts/jquery.fancybox.pack.js")?>></script>
 		
-
 	</head>
 
 <body>

@@ -26,9 +26,9 @@ $(document).ready(function() {
 </div>
 	
 	<div class="hero_text">
-		<strong><h1 id="hero_text_1">Interior Design. </h1><h1 id = "hero_text_2"> Easy.</h1></strong>
-		
-		<p>Check out some design ideas:</P>
+		<strong><h1 id="hero_text_1">Interior Design. </h1><h1 id = "hero_text_2"> Made Easy.</h1></strong>
+		<p> <b>We help you design your home.</b> Browse designer portfolios and inspiration, pick designers, and get a custom design for your room - easily.</P>
+		<p class = "small">Search design inspiration:</p>
 		<?php echo form_open('');
 		echo form_input("search", "Search");
 		?>
@@ -48,13 +48,14 @@ $(document).ready(function() {
 
 <div id = "middle">
 	<img src= <?php echo base_url('assets/Images/talkicon.fw.png');?>>
-	<h3 class = "desc_subtitle">Provide Feedback for Designers</h3>
+	<h3 class = "desc_subtitle">Work With Your Favorite Designer</h3>
 	<p>Designers provide their design ideas, with pictures and options, and edit proposals based on feedback and budget restrictions.</p>
+	<p>You choose the designer that you like the best, and they provide you a full design plan</p>
 </div>
 
 <div id = "right">
 <img src= <?php echo base_url('assets/Images/houseicon.fw.png');?>>
-	<h3 class = "desc_subtitle">Love Your Design</h3>
+	<h3 class = "desc_subtitle">Love Your Room</h3>
 	<p>You get a custom design, including paint colors, furniture, textile and decor suggestions, for one flat fee. </p>
 	</div>
 </div>

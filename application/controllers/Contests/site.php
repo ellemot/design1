@@ -8,10 +8,10 @@ function __construct() {
 	$this->load->library('session');
 	$this->load->model('Contests/contest_model');
 	$this->load->model('Users/picture_model');
-	$user_auth=$this->session->userdata('is_logged_in');
-		if(!$user_auth) {
-		redirect (base_url());
-		}
+	// $user_auth=$this->session->userdata('is_logged_in');
+		// if(!$user_auth) {
+		// redirect (base_url());
+		// }
 	}
 
 
@@ -43,7 +43,11 @@ function floor_plan_show()
 }
 
 function contest_submit()
-{
+
+
+{ 		
+
+
 	if (!empty($_POST))
 	{	//setup basic form data
 		$data['userid']=$this->session->userdata('userid');
@@ -77,33 +81,26 @@ function contest_submit()
 		
 		$id['contestid']=$this->contest_model->upload_form($data);
 		
-		if (!empty($_POST['designs']))
-			{
-				foreach($_POST['designs'] as $design){
-					$filename = $design;
-					$data['pictureid'] = $this->picture_model->get_pictureid($filename);
-					$id['pictureid']=$data['pictureid'][0]['id'];
-					$this->contest_model->set_map_inspiration($id);
-					
-					}
-				}
-		
-		
+			
 		
 		//if room_photo uploaded
-		if($_FILES["room_photo"]["name"][0]!="")
+		if($_FILES["room_photo"]["size"][0]>0)
 		{
-				$numfiles = count($_FILES["room_photo"]['name']);
-								
+			$numfiles = count($_FILES["room_photo"]["size"]);
+							
+							
 			for($i=0; $i<$numfiles; $i++) {
-				if ($_FILES["room_photo"]["name"][$i]!=""){
+				if ($_FILES["room_photo"]["size"][$i]>0){
+				
+			
 				$data['file']=$_FILES["room_photo"];
-				$allowedExts = array("jpg", "jpeg", "gif", "png");
+				$allowedExts = array("jpg", "jpeg", "gif", "png", "JPG");
 				$extension = end(explode(".", $_FILES["room_photo"]["name"][$i]));
 				if ((($_FILES["room_photo"]["type"][$i] == "image/gif")
 				|| ($_FILES["room_photo"]["type"][$i] == "image/jpeg")
 				|| ($_FILES["room_photo"]["type"][$i] == "image/png")
-				|| ($_FILES["room_photo"]["type"][$i] == "image/pjpeg"))
+				|| ($_FILES["room_photo"]["type"][$i] == "image/pjpeg")
+				|| ($_FILES["room_photo"]["type"][$i] == "image/jpg"))
 				&& ($_FILES["room_photo"]["size"][$i] < 3000000)
 				&& in_array($extension, $allowedExts))
 				{
@@ -132,16 +129,19 @@ function contest_submit()
 												
 													$data['file_name']=$file_name;
 													$data['orig_src']=10;
+													$data['desc']=NULL;
 													
 													$id['pictureid']=$this->picture_model->store_photo($data);
 													
 													$this->contest_model->set_map_current($id);
-													
+													$this->load->view("Contests/test",$data);
 													
 													}
 												else {
 													$data['error']='Unable to Upload';
 													// $this->load->view('Contests/project_form',$data);
+													$this->load->view("Contests/test",$data);
+													
 													}		
 									}	
 					}	
@@ -150,7 +150,7 @@ function contest_submit()
 			else
 				{
 				$data['error']=$_FILES["room_photo"];
-				// redirect(base_url('index.php/Contests/site'));			
+				$this->load->view("Contests/test",$data);
 				}
 }//end name check
 }	//end for		
@@ -180,19 +180,20 @@ function contest_submit()
 					}
 				}
 				
-	//if room_photo uploaded
-		if($_FILES["inspr_photo"]["name"][0]!="")
+	// if room_photo uploaded
+		if($_FILES["inspr_photo"]["size"][0]>0)
 		{
-				$numfiles = count($_FILES["inspr_photo"]['name']);
+				$numfiles = count($_FILES["inspr_photo"]['size']);
 								
 			for($i=0; $i<$numfiles; $i++) {
-				if ($_FILES["inspr_photo"]["name"][$i]!=""){
+				if ($_FILES["inspr_photo"]["size"][$i]>0){
 				$data['file']=$_FILES["inspr_photo"];
-				$allowedExts = array("jpg", "jpeg", "gif", "png");
+				$allowedExts = array("jpg", "jpeg", "gif", "png", "JPG", "JPEG", "GIF", "PNG");
 				$extension = end(explode(".", $_FILES["inspr_photo"]["name"][$i]));
 				if ((($_FILES["inspr_photo"]["type"][$i] == "image/gif")
 				|| ($_FILES["inspr_photo"]["type"][$i] == "image/jpeg")
 				|| ($_FILES["inspr_photo"]["type"][$i] == "image/png")
+				|| ($_FILES["inspr_photo"]["type"][$i]=="image/jpg")
 				|| ($_FILES["inspr_photo"]["type"][$i] == "image/pjpeg"))
 				&& ($_FILES["inspr_photo"]["size"][$i] < 3000000)
 				&& in_array($extension, $allowedExts))
@@ -240,7 +241,7 @@ function contest_submit()
 			else
 				{
 				$data['error']=$_FILES["inspr_photo"];
-				// redirect(base_url('index.php/Contests/site'));			
+					
 				}
 }//end name check
 }	//end for		
@@ -252,9 +253,14 @@ function contest_submit()
 				
 				
 		redirect(base_url('index.php/Users/site'));
-		
 	}
 	}
+	
+	
+	
+	function user_file_upload($file) {
+	}
+	
 	
 	function set_file_name()
 	{

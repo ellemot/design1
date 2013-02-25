@@ -18,7 +18,12 @@ value = "Return Home">
 	else {echo '';}		
 ?>
 </div>
+
+
 <div class = "upload_form_container">
+
+
+
 <?php
 
 	$this->load->helper('form');
@@ -39,15 +44,21 @@ value = "Return Home">
 	echo '</div>';
 	
 
-	echo '<div class = "photo_form">';
-	echo form_open('users/upload/photo_link');?>
+	echo '<div class = "photo_form">';?>
+	<div class = "loader">
+	<img src = <?php echo base_url('assets/Images/ajax-loader.gif');?>>
+	<br>
+	</div>
+	<?php
+	$attr = array('id'=>'upload_form');
+	echo form_open('users/upload/photo_link',$attr);?>
 	<input type="text" name="weblink" value="http://" id="photo_link"  class="input_photo" 
 	onfocus="value=''" onblur="value=value" /><br><br>
 	<input type="text" name="desc" value="Description" class="input_photo" 
 	onfocus="value=''" onblur="value=value" /><br>
 	<br>
 	<?php
-	echo form_submit("submit1", 'Submit', 'class="navigation1"');
+	echo form_submit("submit1", 'Submit', 'class="navigation1"', 'id="submit1"');
 	echo form_close();
 	echo '</div>';
 	
@@ -59,13 +70,22 @@ $(document).ready(function() {
 		$("#upload_cancel").click(function() {
 			location.href='/test/design/index.php/users/site';
 			});
-				
-		});
 		
+		$(".loader").hide();		});
+
+
 		
 $("#file1").change(function(){
 	$('#photo_cover').val($(this).val());
 	});
+	
+	
+$("#upload_form").submit(function(){
+	$('.loader').show();
+	
+	return true;
+	});
+	
 </script>
 
 <?php

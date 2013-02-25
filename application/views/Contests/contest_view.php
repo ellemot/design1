@@ -110,6 +110,7 @@ Pictures of Your Room: <br><br>
 <div id = "select_row">
 <hr class = "style"/>
 <p>The style you most like</p>
+
 <?php 
 if($modern!=NULL){echo '<img src="'.base_url('assets/Images/Modern.jpg').'" height=200 class="design_pics">';}
 if($traditional!=NULL){echo '<img src="'.base_url('assets/Images/Traditional.jpg').'" height=200 class="design_pics">';}

@@ -8,10 +8,10 @@ Class Site extends CI_Controller {
 	$this->load->library('session');
 	$this->load->model('Users/picture_model');
 	$this->load->model ('Contests/contest_model');
-	$user_auth=$this->session->userdata('is_logged_in');
-		if(!$user_auth) {
-		redirect (base_url());
-		}
+	// $user_auth=$this->session->userdata('is_logged_in');
+		// if(!$user_auth) {
+		// redirect (base_url());
+		// }
 	}
 	
 	function index() {
@@ -30,7 +30,7 @@ Class Site extends CI_Controller {
 		$data['contest_pics'][$contest_id]['files']=$this->contest_model->get_contest_photos($contest_id);
 	}
 	}	
-	
+	else {$data['contest_pics']=0;}
 	$data['images'] = $this->picture_model->get_user_photos($userid);
 	
 	$this->load->view('Users/home',$data);

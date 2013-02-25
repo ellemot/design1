@@ -9,13 +9,20 @@ $this->session->keep_flashdata('desc');
 value = "Submit Selected">
 <input type = "submit" name = "photo_submit" id="photo_cancel" class = "navigation1" 
 value = "Cancel and Return">
+
+<div class = "loader">
+	<img src = <?php echo base_url('assets/Images/ajax-loader.gif');?>>
+	<br>
+	</div>
 </div>
 </div>
+
+
 <?php
 
 foreach ($images as $key=>$value) 
 {
-	echo '<img class="inactive" src='.$value.' width=300px>';
+	echo '<img class="inactive" src='.$value.' height=150px>';
 }
 
 ?>
@@ -27,8 +34,12 @@ $(document).ready(function() {
 		$(".inactive").click(function() {
 			$(this).toggleClass('active');
 			});
+			
+		$('.loader').hide();
 		
 		$("#photo_submit").click(function() {
+			
+			$('.loader').show();
 			var values = JSON.stringify($(".active").map(function()  
 			{return $(this).attr('src');}).get());
 		
