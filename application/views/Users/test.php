@@ -4,6 +4,8 @@ include(APPPATH.'/views/templates/header.php');
 $this->session->keep_flashdata('desc');
 ?>
 <div id = "select_photo_nav">
+Select pictures for inspiration: 
+
 <div id="button_container"> 
 <input type = "submit" name = "photo_submit" id="photo_submit" class = "navigation1" 
 value = "Submit Selected">
@@ -12,7 +14,7 @@ value = "Cancel and Return">
 
 <div class = "loader">
 	<img src = <?php echo base_url('assets/Images/ajax-loader.gif');?>>
-	<br>
+	<br><br>
 	</div>
 </div>
 </div>

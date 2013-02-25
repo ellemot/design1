@@ -47,7 +47,7 @@ value = "Return Home">
 	echo '<div class = "photo_form">';?>
 	<div class = "loader">
 	<img src = <?php echo base_url('assets/Images/ajax-loader.gif');?>>
-	<br>
+	<br><br>
 	</div>
 	<?php
 	$attr = array('id'=>'upload_form');

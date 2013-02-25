@@ -42,21 +42,32 @@ $(document).ready(function() {
 <div id= "left"> 
 	<img src= <?php echo base_url('assets/Images/photoicon.fw.png');?>>
 	<h3 class = "desc_subtitle">Imagine Your Room</h3>
-	<p>Browse existing designs and save pictures to your design book to get started. </p>
-	<p>Take pictures of the room you'd like designed and upload them to start the design process.  Enter in your budget for furnishings and decor.</p>
+	<p>
+	Complete a short design brief that outlines 
+	what you’re looking for in your new space. 
+	Upload photos from your design books to show 
+	your style to potential contestants. Choose which 
+	design package best suits your needs.  
+	</p>
 	</div>
 
 <div id = "middle">
 	<img src= <?php echo base_url('assets/Images/talkicon.fw.png');?>>
 	<h3 class = "desc_subtitle">Work With Your Favorite Designer</h3>
-	<p>Designers provide their design ideas, with pictures and options, and edit proposals based on feedback and budget restrictions.</p>
-	<p>You choose the designer that you like the best, and they provide you a full design plan</p>
-</div>
+	<p>Designers submit concepts to compete for your project. 
+	Compare bids and provide continual feedback through the 
+	contest to help design a room that you’re sure to love. </p>
+	</div>
 
 <div id = "right">
 <img src= <?php echo base_url('assets/Images/houseicon.fw.png');?>>
 	<h3 class = "desc_subtitle">Love Your Room</h3>
-	<p>You get a custom design, including paint colors, furniture, textile and decor suggestions, for one flat fee. </p>
+	<p>
+	Choose your favorite design concept and 
+	award the prize! You will receive a custom design box, 
+	including drawings, paint swatches, floor plans, and an 
+	itemized list of what you'll need, all for a transparent, flat per room fee. 
+ </p>
 	</div>
 </div>
 
