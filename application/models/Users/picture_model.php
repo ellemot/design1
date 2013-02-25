@@ -40,10 +40,10 @@
 		$data = array();
 		
 		$sql='SELECT p.* from pictures p 
-		where userid = 6 and id not in 
+		where userid = ? and id not in 
 		(SELECT picture_id from picture_map pm
 		join contests c on pm.contest_id = c.id
-		where c.userid = 6 and pm.type = "current")';
+		where c.userid = ? and pm.type = "current")';
 		
 		$query=$this->db->query($sql, array($userid, $userid));
 		

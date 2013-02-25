@@ -88,7 +88,7 @@ function fb_login(){
 									
 						
 						<div class = "logo_container">
-						<a class = "logo" href=<?php echo base_url();?>>EASABLE</a>
+						<a class = "logo" href=<?php echo base_url();?>>Amity Drive</a>
 						</div>
 					</div>
 					

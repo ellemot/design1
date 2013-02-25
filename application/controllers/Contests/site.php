@@ -8,10 +8,10 @@ function __construct() {
 	$this->load->library('session');
 	$this->load->model('Contests/contest_model');
 	$this->load->model('Users/picture_model');
-	// $user_auth=$this->session->userdata('is_logged_in');
-		// if(!$user_auth) {
-		// redirect (base_url());
-		// }
+	$user_auth=$this->session->userdata('is_logged_in');
+		if(!$user_auth) {
+		redirect (base_url());
+		}
 	}
 
 

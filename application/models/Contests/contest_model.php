@@ -52,7 +52,7 @@ $this->db->insert('picture_map',$insert);
 	
 	function get_user_contests($userid) {
 		$data = array();
-		$this->db->where('userid', 6);
+		$this->db->where('userid', $userid);
 		$this->db->limit(20);
 		$this->db->order_by("timestamp", "desc"); 
 		$query=$this->db->get('contests');
